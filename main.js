@@ -16,9 +16,9 @@ const typeTargets = [
 ];
 
 const announcements = [
-  "Mehr Produkte, Social-Funnel und modernisierte Commerce-Landingpage sind live.",
-  "Shop-Demo, KPI-Dashboard, Matchday-Funnel und CRM-Case bilden jetzt ein komplettes Portfolio.",
-  "Suchfunktion, Filter, Motion und klarere Content-Struktur sorgen für einen stärkeren Shop-Auftritt."
+  "Bechtle-Praktikum, Service-Dashboard und Entwicklungsprojekte bilden jetzt ein klares IT-Portfolio.",
+  "Support, Systemadministration, Python und Service-Dokumentation stehen im Mittelpunkt dieser Bewerbungswebsite.",
+  "Suche, Filter, Motion und klare Projektstruktur zeigen technische Themen direkt im passenden Kontext."
 ];
 
 let activeFilter = "all";

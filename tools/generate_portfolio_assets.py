@@ -14,70 +14,66 @@ WEBSITE_URL = "https://retupzu.github.io/sc-freiburg-bewerbung/"
 
 
 DATA = [
-    {"date": "2026-01-18", "matchday": "Yes", "category": "Trikots", "sessions": 1650, "orders": 96, "revenue": 8640, "returns": 4},
-    {"date": "2026-01-18", "matchday": "Yes", "category": "Accessories", "sessions": 1240, "orders": 73, "revenue": 3285, "returns": 3},
-    {"date": "2026-01-18", "matchday": "Yes", "category": "Kids", "sessions": 710, "orders": 31, "revenue": 1240, "returns": 1},
-    {"date": "2026-01-22", "matchday": "No", "category": "Trikots", "sessions": 940, "orders": 39, "revenue": 3510, "returns": 2},
-    {"date": "2026-01-22", "matchday": "No", "category": "Accessories", "sessions": 780, "orders": 28, "revenue": 1260, "returns": 1},
-    {"date": "2026-01-22", "matchday": "No", "category": "Kids", "sessions": 420, "orders": 16, "revenue": 640, "returns": 1},
-    {"date": "2026-01-26", "matchday": "No", "category": "Trikots", "sessions": 1080, "orders": 47, "revenue": 4230, "returns": 2},
-    {"date": "2026-01-26", "matchday": "No", "category": "Accessories", "sessions": 860, "orders": 30, "revenue": 1350, "returns": 1},
-    {"date": "2026-01-26", "matchday": "No", "category": "Kids", "sessions": 515, "orders": 19, "revenue": 760, "returns": 1},
-    {"date": "2026-02-01", "matchday": "Yes", "category": "Trikots", "sessions": 1725, "orders": 102, "revenue": 9180, "returns": 5},
-    {"date": "2026-02-01", "matchday": "Yes", "category": "Accessories", "sessions": 1330, "orders": 77, "revenue": 3465, "returns": 3},
-    {"date": "2026-02-01", "matchday": "Yes", "category": "Kids", "sessions": 760, "orders": 34, "revenue": 1360, "returns": 2},
-    {"date": "2026-02-06", "matchday": "No", "category": "Trikots", "sessions": 990, "orders": 43, "revenue": 3870, "returns": 2},
-    {"date": "2026-02-06", "matchday": "No", "category": "Accessories", "sessions": 810, "orders": 29, "revenue": 1305, "returns": 1},
-    {"date": "2026-02-06", "matchday": "No", "category": "Kids", "sessions": 470, "orders": 17, "revenue": 680, "returns": 1},
-    {"date": "2026-02-15", "matchday": "Yes", "category": "Trikots", "sessions": 1840, "orders": 110, "revenue": 9900, "returns": 5},
-    {"date": "2026-02-15", "matchday": "Yes", "category": "Accessories", "sessions": 1405, "orders": 82, "revenue": 3690, "returns": 4},
-    {"date": "2026-02-15", "matchday": "Yes", "category": "Kids", "sessions": 820, "orders": 38, "revenue": 1520, "returns": 2},
+    {"ticket_id": "SR-101", "date": "2026-02-03", "location": "Freiburg HQ", "category": "Hardware", "priority": "High", "status": "Resolved", "device": "Dell Latitude", "resolution_hours": 3.5, "sla_met": "Yes"},
+    {"ticket_id": "SR-102", "date": "2026-02-03", "location": "Service Desk", "category": "Accounts", "priority": "Medium", "status": "Resolved", "device": "Microsoft 365", "resolution_hours": 2.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-103", "date": "2026-02-04", "location": "Freiburg HQ", "category": "Network", "priority": "High", "status": "Resolved", "device": "Cisco Switch", "resolution_hours": 6.0, "sla_met": "Yes"},
+    {"ticket_id": "SR-104", "date": "2026-02-04", "location": "Commerce Area", "category": "Software", "priority": "Low", "status": "Resolved", "device": "VMware Workstation", "resolution_hours": 4.5, "sla_met": "Yes"},
+    {"ticket_id": "SR-105", "date": "2026-02-04", "location": "Warehouse", "category": "Hardware", "priority": "Medium", "status": "Resolved", "device": "Barcode Scanner", "resolution_hours": 3.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-106", "date": "2026-02-05", "location": "Service Desk", "category": "Accounts", "priority": "Medium", "status": "Resolved", "device": "Active Directory", "resolution_hours": 8.2, "sla_met": "Yes"},
+    {"ticket_id": "SR-107", "date": "2026-02-05", "location": "Freiburg HQ", "category": "Network", "priority": "High", "status": "Resolved", "device": "Access Point", "resolution_hours": 7.3, "sla_met": "Yes"},
+    {"ticket_id": "SR-108", "date": "2026-02-05", "location": "Commerce Area", "category": "Hardware", "priority": "High", "status": "Resolved", "device": "POS Terminal", "resolution_hours": 10.5, "sla_met": "No"},
+    {"ticket_id": "SR-109", "date": "2026-02-06", "location": "Service Desk", "category": "Accounts", "priority": "Low", "status": "Resolved", "device": "User Account", "resolution_hours": 6.7, "sla_met": "Yes"},
+    {"ticket_id": "SR-110", "date": "2026-02-06", "location": "Freiburg HQ", "category": "Software", "priority": "Medium", "status": "Resolved", "device": "Cisco AnyConnect", "resolution_hours": 5.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-111", "date": "2026-02-06", "location": "Warehouse", "category": "Hardware", "priority": "Medium", "status": "Resolved", "device": "Printer", "resolution_hours": 9.4, "sla_met": "Yes"},
+    {"ticket_id": "SR-112", "date": "2026-02-07", "location": "Service Desk", "category": "Accounts", "priority": "Low", "status": "Resolved", "device": "Password Reset", "resolution_hours": 3.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-113", "date": "2026-02-07", "location": "Freiburg HQ", "category": "Network", "priority": "Medium", "status": "Resolved", "device": "Cisco Firewall", "resolution_hours": 7.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-114", "date": "2026-02-08", "location": "Commerce Area", "category": "Hardware", "priority": "Medium", "status": "Resolved", "device": "Checkout PC", "resolution_hours": 9.9, "sla_met": "Yes"},
+    {"ticket_id": "SR-115", "date": "2026-02-08", "location": "Freiburg HQ", "category": "Network", "priority": "High", "status": "Resolved", "device": "VLAN Routing", "resolution_hours": 12.3, "sla_met": "No"},
+    {"ticket_id": "SR-116", "date": "2026-02-09", "location": "Service Desk", "category": "Accounts", "priority": "Medium", "status": "Resolved", "device": "Teams Access", "resolution_hours": 5.6, "sla_met": "Yes"},
+    {"ticket_id": "SR-117", "date": "2026-02-09", "location": "Commerce Area", "category": "Hardware", "priority": "Medium", "status": "Resolved", "device": "Monitor", "resolution_hours": 6.7, "sla_met": "Yes"},
+    {"ticket_id": "SR-118", "date": "2026-02-10", "location": "Freiburg HQ", "category": "Software", "priority": "Low", "status": "Resolved", "device": "Virtual Machine", "resolution_hours": 8.1, "sla_met": "Yes"},
+    {"ticket_id": "SR-119", "date": "2026-02-10", "location": "Warehouse", "category": "Hardware", "priority": "Low", "status": "Resolved", "device": "Label Printer", "resolution_hours": 6.4, "sla_met": "Yes"},
+    {"ticket_id": "SR-120", "date": "2026-02-11", "location": "Service Desk", "category": "Accounts", "priority": "Medium", "status": "Resolved", "device": "Mailbox", "resolution_hours": 7.2, "sla_met": "Yes"},
+    {"ticket_id": "SR-121", "date": "2026-02-11", "location": "Freiburg HQ", "category": "Software", "priority": "Medium", "status": "Resolved", "device": "Cisco Jabber", "resolution_hours": 8.8, "sla_met": "Yes"},
+    {"ticket_id": "SR-122", "date": "2026-02-12", "location": "Service Desk", "category": "Accounts", "priority": "Low", "status": "Resolved", "device": "File Access", "resolution_hours": 5.9, "sla_met": "Yes"},
+    {"ticket_id": "SR-123", "date": "2026-02-12", "location": "Freiburg HQ", "category": "Network", "priority": "Medium", "status": "Resolved", "device": "Patch Panel", "resolution_hours": 6.4, "sla_met": "Yes"},
+    {"ticket_id": "SR-124", "date": "2026-02-13", "location": "Commerce Area", "category": "Hardware", "priority": "Low", "status": "Resolved", "device": "Thin Client", "resolution_hours": 6.8, "sla_met": "Yes"},
 ]
-
-
-def euro(value: float) -> str:
-    return f"{value:,.0f} EUR".replace(",", ".")
 
 
 def pct(value: float) -> str:
     return f"{value * 100:.1f}%"
 
 
+def hours(value: float) -> str:
+    return f"{value:.1f} h".replace(".", ",")
+
+
 def compute_summary() -> dict[str, object]:
-    total_sessions = sum(row["sessions"] for row in DATA)
-    total_orders = sum(row["orders"] for row in DATA)
-    total_revenue = sum(row["revenue"] for row in DATA)
-    total_returns = sum(row["returns"] for row in DATA)
+    total_tickets = len(DATA)
+    avg_resolution = sum(row["resolution_hours"] for row in DATA) / total_tickets
+    sla_met = sum(1 for row in DATA if row["sla_met"] == "Yes")
 
-    conversion = total_orders / total_sessions
-    aov = total_revenue / total_orders
-    return_rate = total_returns / total_orders
-
-    revenue_by_category: dict[str, int] = {}
-    revenue_by_day: dict[str, int] = {}
-    matchday_revenue = 0
-    non_matchday_revenue = 0
+    category_counts: dict[str, int] = {}
+    priority_counts: dict[str, int] = {}
+    volume_by_day: dict[str, int] = {}
 
     for row in DATA:
-        revenue_by_category[row["category"]] = revenue_by_category.get(row["category"], 0) + row["revenue"]
-        revenue_by_day[row["date"]] = revenue_by_day.get(row["date"], 0) + row["revenue"]
-        if row["matchday"] == "Yes":
-            matchday_revenue += row["revenue"]
-        else:
-            non_matchday_revenue += row["revenue"]
+        category_counts[row["category"]] = category_counts.get(row["category"], 0) + 1
+        priority_counts[row["priority"]] = priority_counts.get(row["priority"], 0) + 1
+        volume_by_day[row["date"]] = volume_by_day.get(row["date"], 0) + 1
+
+    same_day = sum(1 for row in DATA if row["resolution_hours"] <= 8)
 
     return {
-        "sessions": total_sessions,
-        "orders": total_orders,
-        "revenue": total_revenue,
-        "returns": total_returns,
-        "conversion": conversion,
-        "aov": aov,
-        "return_rate": return_rate,
-        "revenue_by_category": revenue_by_category,
-        "revenue_by_day": revenue_by_day,
-        "matchday_revenue": matchday_revenue,
-        "non_matchday_revenue": non_matchday_revenue,
+        "tickets": total_tickets,
+        "avg_resolution": avg_resolution,
+        "sla_rate": sla_met / total_tickets,
+        "hardware_cases": category_counts.get("Hardware", 0),
+        "same_day_rate": same_day / total_tickets,
+        "category_counts": category_counts,
+        "priority_counts": priority_counts,
+        "volume_by_day": volume_by_day,
     }
 
 
@@ -86,8 +82,8 @@ SUMMARY = compute_summary()
 
 def write_csv() -> None:
     DOWNLOADS.mkdir(exist_ok=True)
-    target = DOWNLOADS / "scf_ecommerce_daily_data.csv"
-    headers = ["date", "matchday", "category", "sessions", "orders", "revenue", "returns"]
+    target = DOWNLOADS / "bechtle_service_requests.csv"
+    headers = ["ticket_id", "date", "location", "category", "priority", "status", "device", "resolution_hours", "sla_met"]
     with target.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, headers)
         writer.writeheader()
@@ -139,48 +135,64 @@ def build_sheet(rows: list[list[object]]) -> str:
 
 
 def write_xlsx() -> None:
-    data_rows: list[list[object]] = [["Date", "Matchday", "Category", "Sessions", "Orders", "Revenue", "Returns"]]
+    service_rows: list[list[object]] = [[
+        "Ticket ID",
+        "Date",
+        "Location",
+        "Category",
+        "Priority",
+        "Status",
+        "Device",
+        "Resolution Hours",
+        "SLA Met",
+    ]]
     for row in DATA:
-        data_rows.append([
+        service_rows.append([
+            row["ticket_id"],
             row["date"],
-            row["matchday"],
+            row["location"],
             row["category"],
-            row["sessions"],
-            row["orders"],
-            row["revenue"],
-            row["returns"],
+            row["priority"],
+            row["status"],
+            row["device"],
+            row["resolution_hours"],
+            row["sla_met"],
         ])
 
     dashboard_rows: list[list[object]] = [
-        ["SCF Ecommerce KPI Dashboard", "", ""],
+        ["Bechtle IT Service Dashboard", "", ""],
         ["Metric", "Value", "Note"],
-        ["Revenue", SUMMARY["revenue"], "Total sample revenue"],
-        ["Orders", SUMMARY["orders"], "Total orders"],
-        ["Sessions", SUMMARY["sessions"], "Traffic"],
-        ["AOV", round(float(SUMMARY["aov"]), 2), "Average order value"],
-        ["Conversion", round(float(SUMMARY["conversion"]) * 100, 2), "Percent"],
-        ["Return rate", round(float(SUMMARY["return_rate"]) * 100, 2), "Percent"],
-        ["Matchday revenue", SUMMARY["matchday_revenue"], "Home game days"],
-        ["Non-matchday revenue", SUMMARY["non_matchday_revenue"], "Regular days"],
+        ["Tickets", SUMMARY["tickets"], "Sample service requests"],
+        ["Average resolution hours", round(float(SUMMARY["avg_resolution"]), 1), "Average handling time"],
+        ["SLA rate", round(float(SUMMARY["sla_rate"]) * 100, 1), "Percent"],
+        ["Same-day resolution", round(float(SUMMARY["same_day_rate"]) * 100, 1), "Percent"],
+        ["Hardware cases", SUMMARY["hardware_cases"], "Recurring device topics"],
         ["", "", ""],
-        ["Category", "Revenue", ""],
+        ["Category", "Count", ""],
     ]
-    for category, revenue in SUMMARY["revenue_by_category"].items():
-        dashboard_rows.append([category, revenue, ""])
+    for category, count in SUMMARY["category_counts"].items():
+        dashboard_rows.append([category, count, ""])
 
     dashboard_rows.extend([
         ["", "", ""],
-        ["Date", "Revenue", ""],
+        ["Priority", "Count", ""],
     ])
-    for day, revenue in SUMMARY["revenue_by_day"].items():
-        dashboard_rows.append([day, revenue, ""])
+    for priority, count in SUMMARY["priority_counts"].items():
+        dashboard_rows.append([priority, count, ""])
+
+    dashboard_rows.extend([
+        ["", "", ""],
+        ["Date", "Tickets", ""],
+    ])
+    for day, count in SUMMARY["volume_by_day"].items():
+        dashboard_rows.append([day, count, ""])
 
     workbook_xml = (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
         'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
         '<sheets>'
-        '<sheet name="DailyData" sheetId="1" r:id="rId1"/>'
+        '<sheet name="ServiceData" sheetId="1" r:id="rId1"/>'
         '<sheet name="Dashboard" sheetId="2" r:id="rId2"/>'
         '</sheets>'
         '</workbook>'
@@ -232,7 +244,7 @@ def write_xlsx() -> None:
         'xmlns:dcterms="http://purl.org/dc/terms/" '
         'xmlns:dcmitype="http://purl.org/dc/dcmitype/" '
         'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
-        '<dc:title>SCF Ecommerce Portfolio Excel Pack</dc:title>'
+        '<dc:title>Bechtle IT Service Excel Pack</dc:title>'
         '<dc:creator>Codex</dc:creator>'
         f'<dcterms:created xsi:type="dcterms:W3CDTF">{date.today().isoformat()}T00:00:00Z</dcterms:created>'
         '</cp:coreProperties>'
@@ -245,7 +257,7 @@ def write_xlsx() -> None:
         '</Properties>'
     )
 
-    target = DOWNLOADS / "SCF_Ecommerce_Portfolio_ExcelPack.xlsx"
+    target = DOWNLOADS / "Bechtle_IT_Service_ExcelPack.xlsx"
     with zipfile.ZipFile(target, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         archive.writestr("[Content_Types].xml", content_types)
         archive.writestr("_rels/.rels", package_rels)
@@ -254,7 +266,7 @@ def write_xlsx() -> None:
         archive.writestr("xl/workbook.xml", workbook_xml)
         archive.writestr("xl/_rels/workbook.xml.rels", workbook_rels)
         archive.writestr("xl/styles.xml", styles_xml)
-        archive.writestr("xl/worksheets/sheet1.xml", build_sheet(data_rows))
+        archive.writestr("xl/worksheets/sheet1.xml", build_sheet(service_rows))
         archive.writestr("xl/worksheets/sheet2.xml", build_sheet(dashboard_rows))
 
 
@@ -343,77 +355,73 @@ def build_pdf(pages: list[bytes]) -> bytes:
     return bytes(pdf)
 
 
-def kpi_pdf_stream() -> bytes:
-    revenue_by_category = SUMMARY["revenue_by_category"]
-    revenue_by_day = SUMMARY["revenue_by_day"]
-
+def service_pdf_stream() -> bytes:
+    category_counts = SUMMARY["category_counts"]
     lines = [
         "q",
-        pdf_fill(36, 744, 523, 56, rgb=(0.05, 0.05, 0.05)),
+        pdf_fill(36, 744, 523, 56, rgb=(0.06, 0.55, 0.30)),
         "Q",
-        pdf_text(48, 772, "KPI Dashboard Uebersicht", size=24, font="F2"),
-        pdf_text(48, 752, "Bewerbungsprojekt zu Umsatz, AOV, Conversion, Retourenquote und Matchday-Effekt.", size=11),
-        pdf_fill(48, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
-        pdf_fill(168, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
-        pdf_fill(288, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
-        pdf_fill(408, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
-        pdf_text(60, 710, "Revenue", size=10),
-        pdf_text(60, 690, euro(float(SUMMARY["revenue"])), size=17, font="F2"),
-        pdf_text(180, 710, "Orders", size=10),
-        pdf_text(180, 690, str(int(SUMMARY["orders"])), size=17, font="F2"),
-        pdf_text(300, 710, "AOV", size=10),
-        pdf_text(300, 690, euro(float(SUMMARY["aov"])), size=17, font="F2"),
-        pdf_text(420, 710, "Conversion", size=10),
-        pdf_text(420, 690, pct(float(SUMMARY["conversion"])), size=17, font="F2"),
-        pdf_text(48, 648, "Umsatz nach Kategorie", size=13, font="F2"),
-        pdf_text(310, 648, "Umsatz nach Datum", size=13, font="F2"),
+        pdf_text(48, 772, "Bechtle IT Service Dashboard", size=24, font="F2"),
+        pdf_text(48, 752, "Bewerbungsprojekt zu Serviceanfragen, Prioritaeten, SLA und Dokumentation.", size=11),
+        pdf_fill(48, 676, 116, 52, rgb=(0.18, 0.68, 0.39)),
+        pdf_fill(168, 676, 116, 52, rgb=(0.18, 0.68, 0.39)),
+        pdf_fill(288, 676, 116, 52, rgb=(0.18, 0.68, 0.39)),
+        pdf_fill(408, 676, 116, 52, rgb=(0.18, 0.68, 0.39)),
+        pdf_text(60, 710, "Tickets", size=10),
+        pdf_text(60, 690, str(int(SUMMARY["tickets"])), size=17, font="F2"),
+        pdf_text(180, 710, "Avg. time", size=10),
+        pdf_text(180, 690, hours(float(SUMMARY["avg_resolution"])), size=17, font="F2"),
+        pdf_text(300, 710, "SLA rate", size=10),
+        pdf_text(300, 690, pct(float(SUMMARY["sla_rate"])), size=17, font="F2"),
+        pdf_text(420, 710, "Same day", size=10),
+        pdf_text(420, 690, pct(float(SUMMARY["same_day_rate"])), size=17, font="F2"),
+        pdf_text(48, 648, "Tickets nach Kategorie", size=13, font="F2"),
+        pdf_text(310, 648, "Prioritaeten", size=13, font="F2"),
     ]
 
     y = 626
-    for category, value in revenue_by_category.items():
+    for category, value in category_counts.items():
         lines.append(pdf_text(56, y, category, size=11))
-        lines.append(pdf_text(180, y, euro(float(value)), size=11, font="F2"))
+        lines.append(pdf_text(180, y, str(value), size=11, font="F2"))
         y -= 20
 
     y = 626
-    for day, value in revenue_by_day.items():
-        lines.append(pdf_text(318, y, day, size=11))
-        lines.append(pdf_text(418, y, euro(float(value)), size=11, font="F2"))
+    for priority, value in SUMMARY["priority_counts"].items():
+        lines.append(pdf_text(318, y, priority, size=11))
+        lines.append(pdf_text(418, y, str(value), size=11, font="F2"))
         y -= 20
 
     lines.extend([
-        pdf_text(48, 490, "Matchday Vergleich", size=13, font="F2"),
-        pdf_text(56, 468, f"Matchday revenue: {euro(float(SUMMARY['matchday_revenue']))}", size=11),
-        pdf_text(56, 448, f"Non-matchday revenue: {euro(float(SUMMARY['non_matchday_revenue']))}", size=11),
-        pdf_text(56, 428, f"Return rate: {pct(float(SUMMARY['return_rate']))}", size=11),
-        pdf_text(48, 82, "Erstellt fuer die Bewerbungswebsite. Beispielwerte fuer ein E-Commerce-Reporting-Projekt.", size=10),
+        pdf_text(48, 500, "Ableitung", size=13, font="F2"),
+        pdf_text(56, 478, "Die haeufigsten Themen liegen bei Hardware und Accounts.", size=11),
+        pdf_text(56, 460, "Das spricht fuer klare Standards bei Geraete-Setups und Benutzerverwaltung.", size=11),
+        pdf_text(56, 430, "Nutzen fuer die Bewerbung", size=13, font="F2"),
+        pdf_text(56, 408, "Das Projekt zeigt strukturierte Dokumentation, Priorisierung und Service-Denken.", size=11),
+        pdf_text(56, 390, "Genau diese Kombination ist fuer Support und Systemadministration relevant.", size=11),
+        pdf_text(48, 82, "Service-Dashboard fuer die Bewerbungswebsite. Alle Werte sind als realistische Beispieldaten aufgebaut.", size=10),
     ])
     return "\n".join(lines).encode("ascii")
 
 
-def kpi_pdf_insights_stream() -> bytes:
+def service_pdf_insights_stream() -> bytes:
     lines = [
         "q",
-        pdf_fill(36, 744, 523, 56, rgb=(0.05, 0.05, 0.05)),
+        pdf_fill(36, 744, 523, 56, rgb=(0.06, 0.55, 0.30)),
         "Q",
-        pdf_text(48, 772, "KPI Dashboard - Insights & Ableitungen", size=22, font="F2"),
-        pdf_text(48, 752, "Die zweite Seite macht aus Kennzahlen konkrete Shop-Empfehlungen.", size=11),
-        pdf_text(48, 712, "1. Kategorie-Fokus", size=14, font="F2"),
-        pdf_text(48, 692, "Trikots sind die mit Abstand staerkste Kategorie und sollten auf Startseite,", size=11),
-        pdf_text(48, 676, "Landingpages und Matchday-Aktionsflaechen noch staerker priorisiert werden.", size=11),
-        pdf_text(48, 638, "2. Matchday-Effekt", size=14, font="F2"),
-        pdf_text(48, 618, "Der Umsatzsprung an Heimspieltagen spricht fuer klar getimte Angebote,", size=11),
-        pdf_text(48, 602, "Bundling, Hero-Produkte und mehr Sichtbarkeit am Spieltag.", size=11),
-        pdf_text(48, 564, "3. Conversion & Warenkorbwert", size=14, font="F2"),
-        pdf_text(48, 544, "Mit solider Conversion und gutem AOV lohnen sich Cross-Selling und Zubehör", size=11),
-        pdf_text(48, 528, "wie Schals, Caps oder Geschenkartikel als Add-on-Produkte.", size=11),
-        pdf_text(48, 490, "4. Service & Datenqualitaet", size=14, font="F2"),
-        pdf_text(48, 470, "Auch bei guter Performance bleiben Produktdaten und Retourenquote wichtige", size=11),
-        pdf_text(48, 454, "Hebel fuer ein professionelles Shop-Setup.", size=11),
-        pdf_text(48, 416, "Nutzen fuer die Bewerbung", size=14, font="F2"),
-        pdf_text(48, 396, "Das Projekt zeigt nicht nur Zahlenverstaendnis, sondern auch die Faehigkeit,", size=11),
-        pdf_text(48, 380, "Shop-Entscheidungen aus Reporting strukturiert abzuleiten.", size=11),
-        pdf_text(48, 82, "Seite 2 ergaenzt die Uebersicht um operative Prioritaeten fuer E-Commerce-Teams.", size=10),
+        pdf_text(48, 772, "Service Dashboard - Insights & Arbeitsweise", size=22, font="F2"),
+        pdf_text(48, 752, "Die zweite Seite verdichtet die Zahlen auf konkrete Schluesse fuer den Arbeitsalltag.", size=11),
+        pdf_text(48, 712, "1. Priorisieren statt verteilen", size=14, font="F2"),
+        pdf_text(48, 692, "Nicht jede Anfrage ist gleich wichtig. High-, Medium- und Low-Faelle muessen schnell", size=11),
+        pdf_text(48, 676, "eingeordnet werden, damit kritische Stoerungen zuerst bearbeitet werden.", size=11),
+        pdf_text(48, 638, "2. Dokumentation hilft dem Team", size=14, font="F2"),
+        pdf_text(48, 618, "Eine gute Ticketliste macht Probleme nachvollziehbar und reduziert Rueckfragen.", size=11),
+        pdf_text(48, 580, "3. Wiederkehrende Themen erkennen", size=14, font="F2"),
+        pdf_text(48, 560, "Wenn Hardware- oder Account-Faelle haeufig auftreten, lassen sich Standards und", size=11),
+        pdf_text(48, 544, "Checklisten aufbauen. Genau daraus entsteht operative Verbesserung.", size=11),
+        pdf_text(48, 506, "4. Passung fuer Bechtle", size=14, font="F2"),
+        pdf_text(48, 486, "Das Projekt ergaenzt mein Praktikum sinnvoll: Ich zeige damit Support-Denken,", size=11),
+        pdf_text(48, 470, "Service-Struktur und meine Motivation fuer technische Prozessarbeit.", size=11),
+        pdf_text(48, 82, "Seite 2 fokussiert auf strukturierte Arbeitsweise, Priorisierung und klare Service-Logik.", size=10),
     ]
     return "\n".join(lines).encode("ascii")
 
@@ -421,49 +429,50 @@ def kpi_pdf_insights_stream() -> bytes:
 def resume_pdf_stream() -> bytes:
     lines = [
         "q",
-        pdf_fill(36, 756, 523, 50, rgb=(0.05, 0.05, 0.05)),
-        pdf_fill(36, 734, 523, 6, rgb=(0.72, 0.12, 0.14)),
+        pdf_fill(36, 756, 523, 50, rgb=(0.06, 0.55, 0.30)),
+        pdf_fill(36, 734, 523, 6, rgb=(0.18, 0.68, 0.39)),
         "Q",
         pdf_text(48, 781, "Kassem Jaffal", size=25, font="F2"),
-        pdf_text(48, 761, "Bewerbung fuer die Ausbildung Kaufmann im E-Commerce", size=11),
+        pdf_text(48, 761, "Bewerbung als Fachinformatiker fuer Systemintegration", size=11),
         pdf_text(48, 718, "Freiburg im Breisgau | 0174 9683772 | Hassan1.jaffal1@outlook.de", size=10),
         pdf_text(48, 702, f"Website und Portfolio: {WEBSITE_URL}", size=10),
         pdf_text(48, 670, "Kurzprofil", size=14, font="F2"),
-        pdf_text(48, 652, "Digital affiner Bewerber mit technischem Hintergrund, strukturierter Arbeitsweise", size=10),
-        pdf_text(48, 638, "und grossem Interesse an Onlinehandel, Shop-Systemen, Produktdarstellung und Daten.", size=10),
-        pdf_text(48, 624, "Private Projekte zu digitalen Brands, Social Media Marketing und Funnel-Ideen", size=10),
-        pdf_text(48, 610, "haben mein Verstaendnis fuer E-Commerce, Angebotslogik und Zielgruppen weiter vertieft.", size=10),
+        pdf_text(48, 652, "Technisch interessierter Bewerber mit Praktikumserfahrung bei Bechtle, Interesse an", size=10),
+        pdf_text(48, 638, "Systemadministration, Support, Netzwerken, Hardware und sauberer Dokumentation.", size=10),
+        pdf_text(48, 624, "Eigene Projekte in Python, Software-Konzepten und Service-Strukturen ergaenzen", size=10),
+        pdf_text(48, 610, "meinen Werdegang um konkrete technische Arbeitsproben.", size=10),
         pdf_text(48, 580, "Schulbildung", size=14, font="F2"),
         pdf_text(48, 562, "07/2025 | Abitur | Wentzinger Gymnasium, Freiburg", size=10),
-        pdf_text(48, 532, "Praktische Erfahrung", size=14, font="F2"),
-        pdf_text(48, 514, "09/2022 | Praktikum bei Bechtle AG", size=10, font="F2"),
-        pdf_text(48, 500, "Einblicke in technische Prozesse, systematisches Arbeiten und strukturierte Umsetzung.", size=10),
-        pdf_text(48, 482, "2023 | Soziales Praktikum im Kindergarten St. Elisabeth, Stuehlinger", size=10, font="F2"),
-        pdf_text(48, 468, "Staerkung von Teamfaehigkeit, Kommunikation, Verlaesslichkeit und Verantwortungsbewusstsein.", size=10),
-        pdf_text(48, 450, "Laufend | Private E-Commerce- und Marketing-Projekte", size=10, font="F2"),
-        pdf_text(48, 436, "Beschaeftigung mit digitalen Brands, Angebotsseiten, Social Media Marketing und Content-Planung.", size=10),
-        pdf_text(48, 418, "Projektbeispiele", size=14, font="F2"),
-        pdf_text(48, 400, "KPI Dashboard: Umsatz, AOV, Conversion, Retourenquote und Matchday-Vergleich.", size=10),
-        pdf_text(48, 386, "Interaktive Shop-Demo: Produktkarten, Suche, Filter, Warenkorb und vorbereiteter Checkout.", size=10),
-        pdf_text(48, 372, "Matchday-Funnel: Content-Route vom Teaser bis zum Sale mit Vereins- und Kampagnenbezug.", size=10),
-        pdf_text(48, 358, "Social-Funnel: Landingpage mit Lead-Capture und vorbereiteter Welcome-Mail-Automation.", size=10),
-        pdf_text(48, 342, "Kenntnisse", size=14, font="F2"),
-        pdf_text(48, 324, "Interesse an E-Commerce, Online-Shops und digitalen Geschaeftsmodellen", size=10),
-        pdf_text(48, 310, "Sorgfaeltige und strukturierte Arbeitsweise, technisches Grundverstaendnis", size=10),
-        pdf_text(48, 296, "Interesse an Kennzahlen, Reporting, Zielgruppen und digitaler Kommunikation", size=10),
-        pdf_text(48, 282, "Teamfaehig, lernbereit, zuverlaessig und motiviert, Neues schnell aufzunehmen", size=10),
-        pdf_text(48, 252, "Sprachen", size=14, font="F2"),
-        pdf_text(48, 234, "Deutsch: Muttersprache | Englisch: B2 | Franzoesisch: B2 | Spanisch: B1", size=10),
-        pdf_text(48, 204, "Hinweis", size=14, font="F2"),
-        pdf_text(48, 186, "Die Website ergaenzt den Lebenslauf um konkrete E-Commerce-Arbeitsproben und eine Shop-Demo.", size=10),
-        pdf_text(48, 82, "Stand: Maerz 2026 | Bewerbungswebsite und PDF wurden als zusammengehoeriges Portfolio aufgebaut.", size=9),
+        pdf_text(48, 532, "Weitere Ausbildung", size=14, font="F2"),
+        pdf_text(48, 514, "seit 10/2025 | Universitaet Freiburg | Informatik, Grundlagen aus dem ersten Semester", size=10),
+        pdf_text(48, 500, "mit Python, VS Code und technischem Problemverstaendnis.", size=10),
+        pdf_text(48, 472, "Praktische Erfahrung", size=14, font="F2"),
+        pdf_text(48, 454, "09/2022 | Praktikum bei Bechtle AG | Fachinformatik / Systemintegration", size=10, font="F2"),
+        pdf_text(48, 440, "Einblicke in interne Systemadministration, First-Level-Support, Hardware-Einrichtung,", size=10),
+        pdf_text(48, 426, "Cisco-Optimierung, virtuelle Maschinen und technische Ablaeufe.", size=10),
+        pdf_text(48, 408, "2023 | Soziales Praktikum im Kindergarten St. Elisabeth, Freiburg", size=10, font="F2"),
+        pdf_text(48, 394, "Staerkung von Teamfaehigkeit, Kommunikation, Zuverlaessigkeit und Verantwortung.", size=10),
+        pdf_text(48, 366, "Projektbeispiele auf der Website", size=14, font="F2"),
+        pdf_text(48, 348, "Praktikum Bechtle Freiburg: Support, Hardware, Cisco und virtuelle Maschinen.", size=10),
+        pdf_text(48, 334, "Service & Excel Dashboard: Ticketliste, Prioritaeten, SLA und Dokumentation.", size=10),
+        pdf_text(48, 320, "Snake in Python: Spiel-Logik, Schleifen, Zustandsverwaltung und Debugging.", size=10),
+        pdf_text(48, 306, "Yeet Plattform-Prototyp: Feed-, Profil- und Datenlogik als Software-Konzept.", size=10),
+        pdf_text(48, 278, "Kenntnisse", size=14, font="F2"),
+        pdf_text(48, 260, "Python-Grundlagen, VS Code, Rechnernetze, Excel-Listen, Service-Dokumentation,", size=10),
+        pdf_text(48, 246, "logisches Denken, strukturierte Arbeitsweise, Lernbereitschaft und Teamfaehigkeit.", size=10),
+        pdf_text(48, 218, "Sprachen", size=14, font="F2"),
+        pdf_text(48, 200, "Deutsch: Muttersprache | Englisch: B2 | Franzoesisch: B2 | Spanisch: B1", size=10),
+        pdf_text(48, 82, "Stand: Maerz 2026 | Lebenslauf und Website wurden als zusammengehoeriges IT-Portfolio aufgebaut.", size=9),
     ]
     return "\n".join(lines).encode("ascii")
 
 
 def write_pdfs() -> None:
-    (DOWNLOADS / "SCF_Ecommerce_KPI_Dashboard.pdf").write_bytes(build_pdf([kpi_pdf_stream(), kpi_pdf_insights_stream()]))
-    (DOWNLOADS / "Kassem_Jaffal_Lebenslauf.pdf").write_bytes(build_pdf([resume_pdf_stream()]))
+    service_pdf = build_pdf([service_pdf_stream(), service_pdf_insights_stream()])
+    resume_pdf = build_pdf([resume_pdf_stream()])
+    (DOWNLOADS / "Bechtle_IT_Service_Dashboard.pdf").write_bytes(service_pdf)
+    (DOWNLOADS / "Kassem_Jaffal_Lebenslauf_Bechtle.pdf").write_bytes(resume_pdf)
+    (DOWNLOADS / "Kassem_Jaffal_Lebenslauf.pdf").write_bytes(resume_pdf)
 
 
 def main() -> None:
