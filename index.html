@@ -6,7 +6,7 @@
     <title>Kassem Jaffal | Bewerbung Fachinformatiker für Systemintegration</title>
     <meta
       name="description"
-      content="Bewerbungswebsite von Kassem Jaffal für Bechtle AG Freiburg mit Projekten zu Systemadministration, Support, Python, Service-Excel und Software-Konzepten."
+      content="Bewerbungswebsite von Kassem Jaffal für Bechtle AG Freiburg mit Fokus auf Systemadministration, Support, Python, Service-Dokumentation und technische Projektarbeit."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -16,7 +16,7 @@
     <div class="announcement-bar">
       <div class="announcement-bar__inner">
         <span class="announcement-bar__label">Bewerbung</span>
-        <strong id="announcementText">Fachinformatiker für Systemintegration, Praktikumserfahrung bei Bechtle und technische Portfolio-Projekte.</strong>
+        <strong id="announcementText">Fachinformatiker für Systemintegration mit Praktikumserfahrung bei Bechtle und eigenem IT-Portfolio.</strong>
       </div>
     </div>
 
@@ -32,6 +32,7 @@
 
         <nav class="site-nav" aria-label="Hauptnavigation">
           <a class="site-nav__link" href="#profil">Profil</a>
+          <a class="site-nav__link" href="#lebenslauf">Lebenslauf</a>
           <a class="site-nav__link" href="#erfahrung">Erfahrung</a>
           <a class="site-nav__link" href="#portfolio">Portfolio</a>
           <a class="site-nav__link" href="#faq">FAQ</a>
@@ -39,8 +40,8 @@
         </nav>
 
         <div class="site-header__actions">
-          <a class="button button--secondary" href="downloads/Kassem_Jaffal_Lebenslauf_Bechtle.pdf">Lebenslauf PDF</a>
-          <a class="button button--primary" href="projects/bechtle-praktikum.html">Praktikum</a>
+          <a class="button button--secondary" href="#lebenslauf">Werdegang</a>
+          <a class="button button--primary" href="#portfolio">Portfolio</a>
         </div>
       </div>
     </header>
@@ -49,52 +50,84 @@
       <section class="hero" data-section="hero" data-reveal>
         <div class="hero__copy">
           <p class="eyebrow">Bewerbung für Bechtle AG Freiburg</p>
-          <h1>Systemadministration, Support und technische Struktur in einer professionellen Bewerbungswebsite.</h1>
+          <h1>Fachinformatiker für Systemintegration mit Fokus auf Support, Systeme und saubere IT-Struktur.</h1>
           <p class="hero__lead">
             Ich bewerbe mich für die Ausbildung zum Fachinformatiker für
-            Systemintegration mit starkem Interesse an Systemadministration.
-            Durch mein Praktikum bei Bechtle habe ich bereits Einblicke in
-            interne Systemadministration, First-Level-Support,
-            Hardware-Einrichtung, Cisco-Optimierung, virtuelle Maschinen und
-            technische Abläufe im Arbeitsalltag bekommen. Diese Website zeigt
-            meinen Werdegang und passende Projektbeispiele.
+            Systemintegration bei Bechtle in Freiburg. Durch mein Praktikum bei
+            Bechtle habe ich bereits Einblicke in interne Systemadministration,
+            First-Level-Support, Hardware-Einrichtung, Cisco-nahe Themen,
+            virtuelle Maschinen und technische Abläufe im Arbeitsalltag
+            erhalten. Diese Website zeigt meinen Werdegang direkt auf der Seite
+            und ergänzt ihn um passende Projektbeispiele.
           </p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#portfolio">Portfolio ansehen</a>
-            <a class="button button--ghost" href="downloads/Kassem_Jaffal_Lebenslauf_Bechtle.pdf">Lebenslauf herunterladen</a>
+            <a class="button button--primary" href="#lebenslauf">Lebenslauf ansehen</a>
+            <a class="button button--ghost" href="#portfolio">Projekte öffnen</a>
+          </div>
+
+          <div class="status-stack">
+            <span class="status-pill">Bechtle Praktikum</span>
+            <span class="status-pill">1. Semester Informatik</span>
+            <span class="status-pill">Python &amp; VS Code</span>
+            <span class="status-pill">Support &amp; Excel</span>
           </div>
 
           <div class="hero__facts">
-            <article>
+            <article data-spotlight>
               <strong data-count="1">1</strong>
-              <span>Praktikum bei Bechtle mit Einblicken in Support und Systemadministration</span>
+              <span>Praktikum bei Bechtle mit ersten Einblicken in Support und Systemadministration</span>
             </article>
-            <article>
+            <article data-spotlight>
               <strong data-count="4">4</strong>
-              <span>technische Projekt-Cases zu Service, Python, Software und IT-Struktur</span>
+              <span>passende IT-Projekte zu Praxis, Service, Python und Software-Struktur</span>
             </article>
-            <article>
+            <article data-spotlight>
               <strong>IT</strong>
-              <span>Kenntnisse in VS Code, Python, Rechnernetzen, Excel-Dokumentation und Support</span>
+              <span>Kenntnisse in Python, VS Code, Rechnernetzen, Service-Dokumentation und technischem Arbeiten</span>
             </article>
           </div>
         </div>
 
         <div class="hero__visual">
-          <div class="hero__mark-card">
-            <img src="assets/bechtle-mark.svg" alt="Technisches grün-weißes Signet" />
-            <div>
-              <p class="eyebrow">Visuelle Richtung</p>
-              <p>Grün und Weiß als ruhige, technische und strukturierte Markenwelt mit Fokus auf Klarheit, Zuverlässigkeit und IT-Nähe.</p>
+          <article class="portrait-card" data-spotlight>
+            <div class="portrait-card__frame">
+              <img
+                class="portrait-card__photo"
+                src="assets/kassem-portrait.svg"
+                alt="Portrait von Kassem Jaffal"
+                loading="eager"
+              />
             </div>
-          </div>
+            <div class="portrait-card__copy">
+              <p class="eyebrow">Profil</p>
+              <h3>Kassem Jaffal</h3>
+              <p>
+                Ruhig, strukturiert und lernbereit. Besonders interessant finde
+                ich Systeme, Support, Netzwerke, Hardware und nachvollziehbare
+                technische Abläufe.
+              </p>
+            </div>
+          </article>
 
-          <div class="hero__gallery">
-            <img src="assets/system-admin.svg" alt="Illustration zu Systemadministration und Support" loading="lazy" />
-            <img src="assets/service-excel.svg" alt="Illustration zu Service- und Excel-Dokumentation" loading="lazy" />
-            <img src="assets/snake-python.svg" alt="Illustration zu Python und Snake-Projekt" loading="lazy" />
-            <img src="assets/yeet-platform.svg" alt="Illustration zu einer Plattform-Struktur" loading="lazy" />
+          <div class="hero__mosaic">
+            <article class="signal-card" data-spotlight>
+              <span class="insight-card__kicker">Praxis</span>
+              <h3>Bechtle erlebt</h3>
+              <p>Erste Einblicke in echte interne IT-Prozesse und Support-Arbeit.</p>
+            </article>
+            <article class="signal-card" data-spotlight>
+              <span class="insight-card__kicker">Fokus</span>
+              <h3>Systeme und Support</h3>
+              <p>Interesse an Infrastruktur, Benutzern, Hardware und sauberer Fehleranalyse.</p>
+            </article>
+            <article class="signal-card signal-card--wide" data-spotlight>
+              <img src="assets/system-admin.svg" alt="Illustration zu Systemadministration und Support" loading="lazy" />
+              <div>
+                <p class="eyebrow">Visuelle Richtung</p>
+                <p>Grün und Weiß mit klaren Oberflächen, ruhiger Typografie und modernen Bewegungen ohne unnötige Unruhe.</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -107,8 +140,8 @@
           <span>Cisco</span>
           <span>Virtuelle Maschinen</span>
           <span>Rechnernetze</span>
-          <span>VS Code & Python</span>
-          <span>Service & Excel</span>
+          <span>Python &amp; VS Code</span>
+          <span>Service &amp; Excel</span>
         </div>
       </section>
 
@@ -119,16 +152,16 @@
         </div>
 
         <div class="profile-grid">
-          <article class="panel panel--wide">
+          <article class="panel panel--wide" data-spotlight>
             <p>
               Mein Interesse liegt klar im technischen Bereich. Besonders
               motiviert mich die Arbeit an Systemen, Supportfällen,
-              Netzwerken, Hardware und sauber dokumentierten Abläufen.
-              Ich arbeite strukturiert, lerne schnell und kann technische
-              Themen ruhig und verständlich angehen.
+              Netzwerken, Hardware und sauber dokumentierten Abläufen. Ich
+              arbeite strukturiert, lerne schnell und gehe technische Themen
+              ruhig und verständlich an.
             </p>
             <p>
-              Im Praktikum bei Bechtle habe ich bereits erlebt, wie wichtig
+              Im Praktikum bei Bechtle habe ich gesehen, wie wichtig
               interne Systemadministration, First-Level-Support, Hardware-Setup
               und klare Kommunikation im Tagesgeschäft sind. Dazu kommen ein
               Semester Informatik mit Python-Grundlagen sowie eigene Projekte in
@@ -137,17 +170,101 @@
             </p>
           </article>
 
-          <aside class="panel">
+          <aside class="panel" data-spotlight>
             <h3>Stärken auf einen Blick</h3>
             <ul class="check-list">
               <li>Interesse an Systemadministration, Support und Netzwerken</li>
               <li>Erste Praxiserfahrung aus dem Praktikum bei Bechtle AG</li>
               <li>Ein Semester Informatik mit Fokus auf Python und logisches Denken</li>
               <li>Kenntnisse in Python, VS Code und logischem Aufbau von Programmen</li>
-              <li>Saubere Dokumentation und Arbeit mit Excel-Listen</li>
+              <li>Saubere Dokumentation und strukturierte Arbeit mit Excel-Listen</li>
               <li>Ruhige, genaue und lernbereite Arbeitsweise</li>
             </ul>
           </aside>
+        </div>
+      </section>
+
+      <section class="section" id="lebenslauf" data-section="lebenslauf" data-reveal>
+        <div class="section-heading">
+          <p class="eyebrow">Lebenslauf auf der Website</p>
+          <h2>Mein Werdegang, meine Kenntnisse und meine Motivation direkt im Überblick</h2>
+        </div>
+
+        <div class="resume-board">
+          <article class="resume-card resume-card--profile" data-spotlight>
+            <div class="resume-card__profile">
+              <img
+                class="resume-card__photo"
+                src="assets/kassem-portrait.svg"
+                alt="Portrait von Kassem Jaffal"
+                loading="lazy"
+              />
+              <div>
+                <h3>Kassem Jaffal</h3>
+                <p>Freiburg im Breisgau</p>
+                <p>Ausbildung Fachinformatiker für Systemintegration</p>
+              </div>
+            </div>
+            <div class="resume-list">
+              <p><strong>E-Mail</strong> Hassan1.jaffal1@outlook.de</p>
+              <p><strong>Telefon</strong> 0174 9683772</p>
+              <p><strong>Sprachen</strong> Deutsch, Englisch, Französisch, Spanisch</p>
+            </div>
+          </article>
+
+          <article class="resume-card resume-card--timeline" data-spotlight>
+            <h3>Werdegang</h3>
+            <div class="timeline">
+              <article class="timeline-item">
+                <span class="timeline-item__date">seit 10/2025</span>
+                <div>
+                  <strong>Universität Freiburg · Informatik</strong>
+                  <p>Grundlagen aus dem ersten Semester mit Python, VS Code und technischem Problemverständnis.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-item__date">07/2025</span>
+                <div>
+                  <strong>Abitur · Wentzinger Gymnasium</strong>
+                  <p>Allgemeine Hochschulreife in Freiburg.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-item__date">09/2022</span>
+                <div>
+                  <strong>Praktikum · Bechtle AG Freiburg</strong>
+                  <p>Einblicke in interne Systemadministration, Support, Hardware-Einrichtung, Cisco und virtuelle Maschinen.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-item__date">2023</span>
+                <div>
+                  <strong>Soziales Praktikum · St. Elisabeth</strong>
+                  <p>Teamarbeit, Verantwortungsbewusstsein und klare Kommunikation im Alltag gestärkt.</p>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="resume-card" data-spotlight>
+            <h3>Technische Kenntnisse</h3>
+            <div class="skill-matrix">
+              <span>Systemadministration</span>
+              <span>First-Level Support</span>
+              <span>Hardware-Einrichtung</span>
+              <span>Cisco-Grundlagen</span>
+              <span>Virtuelle Maschinen</span>
+              <span>Rechnernetze</span>
+              <span>Python</span>
+              <span>VS Code</span>
+              <span>Excel-Listen</span>
+              <span>Service-Dokumentation</span>
+            </div>
+            <p class="resume-note">
+              Meine Website ersetzt den Lebenslauf nicht nur optisch, sondern
+              macht Erfahrungen und Projekte direkt nachvollziehbar.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -158,7 +275,7 @@
         </div>
 
         <div class="story-grid">
-          <article class="story-card story-card--accent">
+          <article class="story-card story-card--accent" data-spotlight>
             <p class="eyebrow">Praktikum</p>
             <h3>Bechtle AG Freiburg</h3>
             <p>
@@ -168,7 +285,7 @@
             </p>
           </article>
 
-          <article class="story-card">
+          <article class="story-card" data-spotlight>
             <img src="assets/snake-python.svg" alt="Python-Illustration" loading="lazy" />
             <div>
               <p class="eyebrow">Programmierung</p>
@@ -177,7 +294,7 @@
             </div>
           </article>
 
-          <article class="story-card">
+          <article class="story-card" data-spotlight>
             <img src="assets/service-excel.svg" alt="Service- und Excel-Illustration" loading="lazy" />
             <div>
               <p class="eyebrow">Dokumentation</p>
@@ -188,47 +305,47 @@
         </div>
 
         <div class="trend-grid">
-          <article class="trend-card">
+          <article class="trend-card" data-spotlight>
             <span class="insight-card__kicker">Support</span>
             <h3>Probleme strukturiert angehen</h3>
-            <p>Ich arbeite gern nachvollziehbar: Ursache prüfen, sauber dokumentieren, verständlich kommunizieren und Lösung umsetzen.</p>
+            <p>Ich arbeite nachvollziehbar: Ursache prüfen, dokumentieren, verständlich kommunizieren und Lösungen sauber umsetzen.</p>
           </article>
-          <article class="trend-card">
+          <article class="trend-card" data-spotlight>
             <span class="insight-card__kicker">Netzwerk</span>
             <h3>Interesse an Rechnernetzen</h3>
             <p>Durch das Fach Rechnernetze habe ich Grundlagen zu Netzwerkstrukturen, Verbindungen und technischer Infrastruktur aufgebaut.</p>
           </article>
-          <article class="trend-card">
+          <article class="trend-card" data-spotlight>
             <span class="insight-card__kicker">Software</span>
             <h3>Technik und Logik verbinden</h3>
-            <p>Von Python bis Plattform-Konzept: Ich finde es spannend, wenn Systeme, Code und klare Strukturen zusammenkommen.</p>
+            <p>Von Python bis Plattform-Konzept: Mich interessiert, wie Systeme funktionieren, zusammenhängen und stabil aufgebaut werden.</p>
           </article>
         </div>
       </section>
 
       <section class="section" id="insights" data-section="insights" data-reveal>
         <div class="section-heading">
-          <p class="eyebrow">Highlights</p>
-          <h2>Was Bechtle in dieser Website direkt über mich sehen kann</h2>
+          <p class="eyebrow">Warum diese Website wirkt</p>
+          <h2>Was Bechtle in dieser Website direkt über mich erkennen kann</h2>
         </div>
 
         <div class="insight-grid">
-          <article class="insight-card">
+          <article class="insight-card" data-spotlight>
             <span class="insight-card__kicker">Praxis</span>
             <h3>Praktikum mit echtem IT-Bezug</h3>
             <p>Erfahrungen in Support, Systemadministration, Hardware-Einrichtung, Cisco-Optimierung und virtuellen Maschinen.</p>
           </article>
 
-          <article class="insight-card">
+          <article class="insight-card" data-spotlight>
             <span class="insight-card__kicker">Entwicklung</span>
             <h3>Python-Projekte und Softwarelogik</h3>
-            <p>Snake in Python und ein Yeet-Plattform-Konzept zeigen, dass ich nicht nur Systeme nutze, sondern Technik auch logisch aufbauen kann.</p>
+            <p>Snake in Python und der Yeet-Prototyp zeigen, dass ich Technik nicht nur nutze, sondern auch logisch aufbaue.</p>
           </article>
 
-          <article class="insight-card">
+          <article class="insight-card" data-spotlight>
             <span class="insight-card__kicker">Service</span>
-            <h3>Dokumentation und Excel-Struktur</h3>
-              <p>Der Service-/Excel-Case zeigt, wie ich Anfragen, Prioritäten, Hardwarefälle und Status sauber strukturieren würde.</p>
+            <h3>Dokumentation und Struktur</h3>
+            <p>Der Service-Excel-Case zeigt, wie ich Anfragen, Prioritäten, Hardwarefälle und Status sauber strukturieren würde.</p>
           </article>
         </div>
       </section>
@@ -245,7 +362,7 @@
             <input
               id="portfolioSearch"
               type="search"
-              placeholder="Zum Suchen / drücken oder z. B. Support, Python, Netzwerk, Excel eingeben"
+              placeholder="Drücke / oder suche nach Support, Python, Netzwerk, Excel"
               autocomplete="off"
             />
           </label>
@@ -265,6 +382,7 @@
             class="portfolio-card"
             data-category="support"
             data-search="bechtle praktikum systemadministration support cisco virtuelle maschine hardware commerce shop first level support"
+            data-spotlight
           >
             <img src="assets/system-admin.svg" alt="Illustration zu Systemadministration und Support" loading="lazy" />
             <div class="portfolio-card__body">
@@ -282,11 +400,12 @@
             class="portfolio-card"
             data-category="service"
             data-search="excel service dashboard kundenanfragen ticketliste dokumentation service excel listen anfragen"
+            data-spotlight
           >
             <img src="assets/service-excel.svg" alt="Illustration zu Service und Excel" loading="lazy" />
             <div class="portfolio-card__body">
               <span class="portfolio-card__tag">Service</span>
-              <h3>Service & Excel Dashboard</h3>
+              <h3>Service &amp; Excel Dashboard</h3>
               <p>Excel-Listen und Dashboard-Idee für Kundenanfragen, Hardware-Fälle, Prioritäten und technische Service-Übersicht.</p>
               <p class="portfolio-card__meta">Tools: Excel, CSV, Service, Dokumentation</p>
               <div class="portfolio-card__actions">
@@ -300,6 +419,7 @@
             class="portfolio-card"
             data-category="development"
             data-search="python snake vscode programmierung spiel logik python erstes semester"
+            data-spotlight
           >
             <img src="assets/snake-python.svg" alt="Illustration zu Python Snake" loading="lazy" />
             <div class="portfolio-card__body">
@@ -317,6 +437,7 @@
             class="portfolio-card"
             data-category="development"
             data-search="yeet plattform social media plattform software konzept posten feed profil python andere sprachen"
+            data-spotlight
           >
             <img src="assets/yeet-platform.svg" alt="Illustration zu einer Plattform-Struktur" loading="lazy" />
             <div class="portfolio-card__body">
@@ -342,19 +463,19 @@
 
         <div class="image-rail" aria-label="Technische Themen">
           <div class="image-rail__track">
-            <article class="image-rail__card">
+            <article class="image-rail__card" data-spotlight>
               <img src="assets/system-admin.svg" alt="Systemadministration" loading="lazy" />
               <p>Systemadministration und Support</p>
             </article>
-            <article class="image-rail__card">
+            <article class="image-rail__card" data-spotlight>
               <img src="assets/service-excel.svg" alt="Excel und Service" loading="lazy" />
               <p>Service-Dokumentation und Excel-Struktur</p>
             </article>
-            <article class="image-rail__card">
+            <article class="image-rail__card" data-spotlight>
               <img src="assets/snake-python.svg" alt="Python und VS Code" loading="lazy" />
               <p>Python, Logik und VS Code</p>
             </article>
-            <article class="image-rail__card">
+            <article class="image-rail__card" data-spotlight>
               <img src="assets/yeet-platform.svg" alt="Software-Konzept" loading="lazy" />
               <p>Software- und Plattform-Struktur</p>
             </article>
@@ -369,16 +490,16 @@
         </div>
 
         <div class="faq-list">
-          <article class="faq-item">
+          <article class="faq-item" data-spotlight>
             <button class="faq-trigger" type="button" aria-expanded="false">
               Warum interessiert mich Fachinformatik für Systemintegration?
             </button>
             <div class="faq-content" hidden>
-              <p>Weil mich Systeme, Support, Hardware, Netzwerke und technische Abläufe mehr reizen als reine Theorie. Ich arbeite gern direkt an Lösungen.</p>
+              <p>Weil mich Systeme, Support, Hardware, Netzwerke und technische Abläufe stärker reizen als reine Theorie. Ich arbeite gern direkt an Lösungen.</p>
             </div>
           </article>
 
-          <article class="faq-item">
+          <article class="faq-item" data-spotlight>
             <button class="faq-trigger" type="button" aria-expanded="false">
               Warum passt Bechtle gut zu mir?
             </button>
@@ -387,16 +508,16 @@
             </div>
           </article>
 
-          <article class="faq-item">
+          <article class="faq-item" data-spotlight>
             <button class="faq-trigger" type="button" aria-expanded="false">
               Was zeigen die Projekte zusätzlich zum Lebenslauf?
             </button>
             <div class="faq-content" hidden>
-              <p>Sie zeigen, dass ich technische Themen nicht nur interessant finde, sondern auch selbst strukturiert in Projekte, Dokumentation und Softwarelogik übersetze.</p>
+              <p>Sie zeigen, dass ich technische Themen nicht nur interessant finde, sondern selbst in Projekte, Dokumentation und Softwarelogik übersetzen kann.</p>
             </div>
           </article>
 
-          <article class="faq-item">
+          <article class="faq-item" data-spotlight>
             <button class="faq-trigger" type="button" aria-expanded="false">
               Welche Kenntnisse bringe ich schon mit?
             </button>
@@ -406,25 +527,43 @@
           </article>
         </div>
       </section>
+
+      <section class="section section--contact" id="kontakt" data-section="kontakt" data-reveal>
+        <div class="section-heading">
+          <p class="eyebrow">Kontakt</p>
+          <h2>Direkte Kontaktmöglichkeiten ohne Umwege</h2>
+        </div>
+
+        <div class="contact-panel" data-spotlight>
+          <div>
+            <h3>Kassem Jaffal</h3>
+            <p>Freiburg im Breisgau</p>
+            <p><a href="mailto:Hassan1.jaffal1@outlook.de">Hassan1.jaffal1@outlook.de</a></p>
+            <p><a href="tel:+491749683772">0174 9683772</a></p>
+          </div>
+          <div class="contact-actions">
+            <a class="button button--primary" href="mailto:Hassan1.jaffal1@outlook.de">E-Mail schreiben</a>
+            <button class="button button--secondary" type="button" id="copyEmailButton" data-copy="Hassan1.jaffal1@outlook.de">E-Mail kopieren</button>
+            <a class="button button--ghost" href="tel:+491749683772">Anrufen</a>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="site-footer" id="kontakt">
+    <footer class="site-footer">
       <div class="site-footer__inner">
         <div>
-          <p class="eyebrow">Kontakt</p>
+          <p class="eyebrow">Bewerbungswebsite</p>
           <h2>Kassem Jaffal</h2>
-          <p>Freiburg im Breisgau</p>
-          <p><a href="mailto:Hassan1.jaffal1@outlook.de">Hassan1.jaffal1@outlook.de</a></p>
-          <p><a href="tel:+491749683772">0174 9683772</a></p>
+          <p>Technische Bewerbungswebsite für Bechtle AG Freiburg mit Fokus auf Support, Systemadministration und Entwicklung.</p>
         </div>
 
         <div>
-          <p class="eyebrow">Projekte</p>
+          <p class="eyebrow">Direkt</p>
           <ul class="footer-links">
-            <li><a href="projects/bechtle-praktikum.html">Praktikum Bechtle</a></li>
-            <li><a href="projects/service-excel.html">Service & Excel</a></li>
-            <li><a href="projects/python-snake.html">Snake in Python</a></li>
-            <li><a href="projects/yeet-platform.html">Yeet Plattform</a></li>
+            <li><a href="#lebenslauf">Lebenslauf</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
           </ul>
         </div>
 
@@ -433,16 +572,18 @@
           <ul class="footer-links">
             <li><a href="legal/impressum.html">Impressum</a></li>
             <li><a href="legal/datenschutz.html">Datenschutz</a></li>
-            <li><a href="downloads/Kassem_Jaffal_Lebenslauf_Bechtle.pdf">Lebenslauf PDF</a></li>
+            <li><a href="mailto:Hassan1.jaffal1@outlook.de">E-Mail</a></li>
           </ul>
         </div>
       </div>
 
       <div class="site-footer__meta">
-        <p>Technische Bewerbungswebsite für Bechtle AG Freiburg, aufgebaut als Portfolio zu Support, Systemadministration und Entwicklung.</p>
+        <p>Modernes Onepage-Portfolio mit Werdegang, Projektbeispielen und direktem Kontakt auf einer Seite.</p>
         <a class="back-to-top" href="#top">Nach oben</a>
       </div>
     </footer>
+
+    <div class="copy-toast" id="copyToast" hidden>E-Mail-Adresse kopiert</div>
 
     <script src="main.js"></script>
   </body>

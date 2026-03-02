@@ -9,16 +9,19 @@ const navLinks = [...document.querySelectorAll(".site-nav__link")];
 const announcementText = document.getElementById("announcementText");
 const revealTargets = [...document.querySelectorAll("[data-reveal]")];
 const countTargets = [...document.querySelectorAll("[data-count]")];
+const copyEmailButton = document.getElementById("copyEmailButton");
+const copyToast = document.getElementById("copyToast");
+const spotlightTargets = [...document.querySelectorAll("[data-spotlight]")];
 const typeTargets = [
   ...document.querySelectorAll(
-    ".hero h1, .section-heading h2, .project-hero__copy h1, .shop-hero__copy h1, .project-panel > h2, .legal-panel > h1"
+    ".hero h1, .section-heading h2, .project-hero__copy h1, .project-panel > h2, .legal-panel > h1"
   )
 ];
 
 const announcements = [
-  "Bechtle-Praktikum, Service-Dashboard und Entwicklungsprojekte bilden jetzt ein klares IT-Portfolio.",
-  "Support, Systemadministration, Python und Service-Dokumentation stehen im Mittelpunkt dieser Bewerbungswebsite.",
-  "Suche, Filter, Motion und klare Projektstruktur zeigen technische Themen direkt im passenden Kontext."
+  "Lebenslauf, Werdegang und Portfolio sind jetzt direkt auf der Website integriert.",
+  "Support, Systemadministration, Python und Service-Dokumentation stehen im Mittelpunkt dieser Bewerbung.",
+  "Suchfunktion, Spotlight-Hover, Motion und klare Struktur zeigen technische Themen in einem modernen Kontext."
 ];
 
 let activeFilter = "all";
@@ -205,6 +208,55 @@ function bindSectionHighlight() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function bindPointerAmbient() {
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      document.body.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.body.style.setProperty("--pointer-y", `${event.clientY}px`);
+    },
+    { passive: true }
+  );
+}
+
+function bindSpotlights() {
+  spotlightTargets.forEach((target) => {
+    target.addEventListener("pointermove", (event) => {
+      const rect = target.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      target.style.setProperty("--spotlight-x", `${x}px`);
+      target.style.setProperty("--spotlight-y", `${y}px`);
+    });
+  });
+}
+
+function bindCopyButton() {
+  if (!copyEmailButton || !copyToast) {
+    return;
+  }
+
+  copyEmailButton.addEventListener("click", async () => {
+    const value = copyEmailButton.dataset.copy || "";
+    try {
+      await navigator.clipboard.writeText(value);
+      copyToast.hidden = false;
+      window.clearTimeout(bindCopyButton.timeoutId);
+      bindCopyButton.timeoutId = window.setTimeout(() => {
+        copyToast.hidden = true;
+      }, 1800);
+    } catch {
+      copyToast.textContent = "Kopieren nicht möglich";
+      copyToast.hidden = false;
+      window.clearTimeout(bindCopyButton.timeoutId);
+      bindCopyButton.timeoutId = window.setTimeout(() => {
+        copyToast.hidden = true;
+        copyToast.textContent = "E-Mail-Adresse kopiert";
+      }, 1800);
+    }
+  });
+}
+
 function startAnnouncementRotation() {
   if (!announcementText) {
     return;
@@ -358,6 +410,9 @@ bindRevealObserver();
 bindCounters();
 prepareTypeScroll();
 bindTypeScroll();
+bindPointerAmbient();
+bindSpotlights();
+bindCopyButton();
 bindScrollChrome();
 startAnnouncementRotation();
 updateScrollChrome();
