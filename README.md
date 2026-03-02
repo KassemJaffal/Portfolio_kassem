@@ -1,4 +1,4 @@
-# SC Freiburg Bewerbung
+
 
 Statische Bewerbungswebsite mit Portfolio und Projektseiten.
 
