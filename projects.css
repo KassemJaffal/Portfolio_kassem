@@ -13,6 +13,9 @@
 }
 
 .subnav {
+  position: sticky;
+  top: 12px;
+  z-index: 58;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +26,9 @@
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.03);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  transition: transform 260ms ease, opacity 260ms ease;
+  will-change: transform;
 }
 
 .subnav a {
@@ -38,6 +44,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+}
+
+body.is-scrolling-down .subnav {
+  transform: translateY(calc(-100% - 12px));
+  opacity: 0;
+}
+
+body.is-scrolling-up .subnav,
+body:not(.is-scrolling-down) .subnav {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .project-hero,
@@ -802,6 +819,10 @@
   .checkout-actions,
   .shop-card__actions {
     display: grid;
+  }
+
+  .subnav {
+    top: 8px;
   }
 
   .project-hero,

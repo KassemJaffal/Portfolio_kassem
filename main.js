@@ -9,6 +9,11 @@ const navLinks = [...document.querySelectorAll(".site-nav__link")];
 const announcementText = document.getElementById("announcementText");
 const revealTargets = [...document.querySelectorAll("[data-reveal]")];
 const countTargets = [...document.querySelectorAll("[data-count]")];
+const typeTargets = [
+  ...document.querySelectorAll(
+    ".hero h1, .section-heading h2, .project-hero__copy h1, .shop-hero__copy h1, .project-panel > h2, .legal-panel > h1"
+  )
+];
 
 const announcements = [
   "Mehr Produkte, Social-Funnel und modernisierte Commerce-Landingpage sind live.",
@@ -18,6 +23,8 @@ const announcements = [
 
 let activeFilter = "all";
 let announcementIndex = 0;
+let lastScrollY = window.scrollY;
+let scrollDirectionFrame = null;
 
 function normalize(text) {
   return (text || "")
@@ -38,11 +45,56 @@ function runWithTransition(fn) {
 
 function updateScrollProgress() {
   if (!progressBar) {
-    return;
+    return window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   }
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
   progressBar.style.width = `${progress}%`;
+  return progress / 100;
+}
+
+function updateScrollChrome() {
+  const currentScrollY = window.scrollY;
+  const delta = currentScrollY - lastScrollY;
+  const normalizedProgress = updateScrollProgress();
+  document.body.style.setProperty("--scroll-darkness", String(Math.min(1, normalizedProgress * 1.2)));
+
+  if (currentScrollY < 36) {
+    document.body.classList.remove("is-scrolling-down", "is-scrolling-up");
+    lastScrollY = currentScrollY;
+    return;
+  }
+
+  if (Math.abs(delta) < 6) {
+    return;
+  }
+
+  if (delta > 0 && currentScrollY > 120) {
+    document.body.classList.add("is-scrolling-down");
+    document.body.classList.remove("is-scrolling-up");
+  } else if (delta < 0) {
+    document.body.classList.add("is-scrolling-up");
+    document.body.classList.remove("is-scrolling-down");
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+function bindScrollChrome() {
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (scrollDirectionFrame !== null) {
+        return;
+      }
+
+      scrollDirectionFrame = window.requestAnimationFrame(() => {
+        updateScrollChrome();
+        scrollDirectionFrame = null;
+      });
+    },
+    { passive: true }
+  );
 }
 
 function filterPortfolio() {
@@ -184,6 +236,73 @@ function bindRevealObserver() {
   revealTargets.forEach((target) => observer.observe(target));
 }
 
+function prepareTypeScroll() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  typeTargets.forEach((target) => {
+    if (!target || target.dataset.typePrepared === "true") {
+      return;
+    }
+
+    const originalText = target.textContent || "";
+    if (!originalText.trim()) {
+      return;
+    }
+
+    target.dataset.typePrepared = "true";
+    target.setAttribute("aria-label", originalText);
+    target.classList.add("type-scroll");
+    target.textContent = "";
+
+    [...originalText].forEach((character, index) => {
+      const span = document.createElement("span");
+      span.className = "type-scroll__char";
+      span.style.setProperty("--char-index", String(index));
+      span.setAttribute("aria-hidden", "true");
+
+      if (character === " ") {
+        span.classList.add("type-scroll__space");
+        span.textContent = "\u00A0";
+      } else {
+        span.textContent = character;
+      }
+
+      target.appendChild(span);
+    });
+  });
+}
+
+function bindTypeScroll() {
+  if (!typeTargets.length) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
+    typeTargets.forEach((target) => target.classList.add("is-typed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-typed");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -16% 0px", threshold: 0.28 }
+  );
+
+  typeTargets.forEach((target) => observer.observe(target));
+}
+
 function animateCounter(element) {
   const target = Number(element.dataset.count);
   if (!Number.isFinite(target)) {
@@ -231,14 +350,15 @@ if (searchInput) {
   searchInput.addEventListener("input", filterPortfolio);
 }
 
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-
 bindFilterChips();
 bindFaq();
 bindKeyboardShortcuts();
 bindSectionHighlight();
 bindRevealObserver();
 bindCounters();
+prepareTypeScroll();
+bindTypeScroll();
+bindScrollChrome();
 startAnnouncementRotation();
-updateScrollProgress();
+updateScrollChrome();
 filterPortfolio();
