@@ -4,7 +4,7 @@ Neuenburgerstraße 5, 79115 Freiburg
 Telefon: 0174 9683772  
 E-Mail: Hassan1.jaffal1@outlook.de  
 Bewerbungswebsite / Portfolio: `https://DEIN-LINK-HIER`  
-Projektbeispiele auf der Website: KPI Dashboard, Mock-Fanshop, Matchday-Funnel
+Projektbeispiele auf der Website: KPI Dashboard, interaktive Shop-Demo, Matchday-Funnel
 
 ## Kurzprofil
 
@@ -27,7 +27,7 @@ Selbstständige Beschäftigung mit digitalen Brands, Produktideen, Social Media 
 
 Projektbeispiele:
 - KPI Dashboard fuer Umsatz, AOV, Conversion, Retourenquote und Matchday-Vergleich
-- Mock-Fanshop mit Fokus auf Produktdarstellung, Angebotslogik und Shop-Struktur
+- Interaktive Shop-Demo mit Produktdarstellung, Warenkorb, Checkout-Flow und vorbereiteter Stripe-Anbindung
 - Matchday-Funnel fuer Social Content, Angebotsseiten und Conversion-Denken
 
 ## Kenntnisse

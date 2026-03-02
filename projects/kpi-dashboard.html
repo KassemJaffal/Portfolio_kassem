@@ -3,32 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KPI Dashboard | Kassem Jaffal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>KPI Dashboard Uebersicht | Kassem Jaffal</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../projects.css" />
   </head>
   <body class="project-page">
     <div class="project-shell">
+      <nav class="subnav" aria-label="Unterseiten Navigation">
+        <a href="../index.html">Zur Startseite</a>
+        <div class="subnav__links">
+          <a href="mock-fanshop.html">Shop-Demo</a>
+          <a href="matchday-funnel.html">Matchday-Funnel</a>
+        </div>
+      </nav>
+
       <section class="project-hero">
         <div class="project-hero__copy">
           <p class="eyebrow">Projekt 01 · Reporting</p>
-          <h1>KPI Dashboard</h1>
+          <h1>KPI Dashboard Uebersicht</h1>
           <p class="project-copy">
-            Dieses Projekt zeigt, wie ich Kennzahlen aus einem E-Commerce-Kontext
-            strukturiere, auswerte und in eine verstaendliche Reporting-Ansicht
-            uebersetze. Der Fokus liegt auf Umsatz, Conversion, AOV,
-            Retourenquote und dem Vergleich von Matchday und Non-Matchday.
+            Diese Seite macht das Reporting-Projekt bewusst uebersichtlicher:
+            klare KPI-Kacheln, Kategorie-Umsaetze, Matchday-Vergleich und direkte
+            Downloads fuer PDF, XLSX und CSV.
           </p>
           <div class="button-row">
-            <a class="button button--primary" href="../downloads/SCF_Ecommerce_Portfolio_ExcelPack.xlsx">Excel Pack</a>
-            <a class="button download-link" href="../downloads/SCF_Ecommerce_KPI_Dashboard.pdf">PDF</a>
-            <a class="button button--ghost" href="../index.html#projects">Zurueck</a>
+            <a class="button button--primary" href="../downloads/SCF_Ecommerce_KPI_Dashboard.pdf">PDF oeffnen</a>
+            <a class="button button--secondary" href="../downloads/SCF_Ecommerce_Portfolio_ExcelPack.xlsx">Excel Pack</a>
+            <a class="button button--ghost" href="../downloads/scf_ecommerce_daily_data.csv">CSV</a>
           </div>
         </div>
 
@@ -38,8 +39,8 @@
       </section>
 
       <section class="project-panel">
-        <p class="eyebrow">Dashboard Preview</p>
-        <h2>KPI Uebersicht</h2>
+        <p class="eyebrow">KPI Snapshot</p>
+        <h2>Direkt lesbare Kennzahlen</h2>
         <div class="dashboard-grid">
           <article class="dashboard-metric">
             <span class="dashboard-metric__label">Revenue</span>
@@ -55,34 +56,36 @@
           </article>
           <article class="dashboard-metric">
             <span class="dashboard-metric__label">Conversion</span>
-            <span class="dashboard-metric__value">5.0%</span>
+            <span class="dashboard-metric__value">5,0%</span>
           </article>
         </div>
+        <p class="metric-note">Fokus: schnell erkennbare KPI-Lage fuer operative Entscheidungen im Shop-Alltag.</p>
       </section>
 
       <section class="project-panel">
-        <p class="eyebrow">Analyse</p>
-        <h2>Kategorien und Tagesumsatz</h2>
+        <p class="eyebrow">Analytik</p>
+        <h2>Was im Dashboard sichtbar wird</h2>
         <div class="chart-layout">
           <article class="chart-panel">
-            <h3>Revenue by Category</h3>
+            <h3>Umsatz pro Kategorie</h3>
             <div class="bar-chart">
               <div class="bar-row">
                 <span>Trikots</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 72%"></div></div>
-                <strong>43.330 EUR</strong>
+                <div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div>
+                <strong>39.330 EUR</strong>
               </div>
               <div class="bar-row">
                 <span>Accessories</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 26%"></div></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 37%"></div></div>
                 <strong>14.355 EUR</strong>
               </div>
               <div class="bar-row">
                 <span>Kids</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 11%"></div></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 16%"></div></div>
                 <strong>6.200 EUR</strong>
               </div>
             </div>
+            <p class="chart-caption">Die Kategorie Trikots fuehrt klar. Daraus folgen Prioritaeten fuer Aktionen, Bestand und Platzierung.</p>
           </article>
 
           <article class="chart-panel">
@@ -95,30 +98,30 @@
               </div>
               <div class="bar-row">
                 <span>Non-Matchday</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 37%"></div></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 42%"></div></div>
                 <strong>17.605 EUR</strong>
               </div>
             </div>
             <div class="legend">
-              <span><strong>Return rate:</strong> 4.5%</span>
-              <span><strong>Focus:</strong> Reporting and optimization</span>
+              <span><strong>Return rate:</strong> 4,5%</span>
+              <span><strong>Ziel:</strong> Aktionen und Reporting besser steuern</span>
             </div>
           </article>
         </div>
       </section>
 
       <section class="project-panel">
-        <p class="eyebrow">Downloads</p>
-        <h2>Projektdateien</h2>
+        <p class="eyebrow">Dateien</p>
+        <h2>Direkt verwendbare Bewerbungs-Assets</h2>
         <div class="download-row">
-          <a class="button button--primary" href="../downloads/SCF_Ecommerce_Portfolio_ExcelPack.xlsx">SCF_Ecommerce_Portfolio_ExcelPack.xlsx</a>
-          <a class="button download-link" href="../downloads/SCF_Ecommerce_KPI_Dashboard.pdf">SCF_Ecommerce_KPI_Dashboard.pdf</a>
-          <a class="button button--card" href="../downloads/scf_ecommerce_daily_data.csv">Raw CSV</a>
+          <a class="button button--primary" href="../downloads/SCF_Ecommerce_KPI_Dashboard.pdf">PDF fuer Recruiter</a>
+          <a class="button button--secondary" href="../downloads/SCF_Ecommerce_Portfolio_ExcelPack.xlsx">XLSX zum Oeffnen</a>
+          <a class="button button--ghost" href="../downloads/scf_ecommerce_daily_data.csv">Rohdaten</a>
         </div>
         <ul class="download-list">
-          <li>Die XLSX-Datei enthaelt ein Datenblatt und ein Dashboard-Blatt.</li>
-          <li>Die PDF-Datei eignet sich fuer einen direkten Bewerbungs- oder Drive-Link.</li>
-          <li>Die Zahlen sind als Bewerbungsdemo aufgebaut und fuer Portfolio-Zwecke aufbereitet.</li>
+          <li>Die PDF ist fuer einen schnellen, uebersichtlichen Projektblick gedacht.</li>
+          <li>Die XLSX-Datei enthaelt ein Datenblatt plus Dashboard-Blatt als Demo.</li>
+          <li>Das CSV zeigt transparent, welche Beispielwerte fuer das Projekt genutzt wurden.</li>
         </ul>
       </section>
     </div>

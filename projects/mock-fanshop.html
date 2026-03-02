@@ -3,81 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mock-Fanshop | Kassem Jaffal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>Shop-Demo | Kassem Jaffal</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../projects.css" />
   </head>
   <body class="project-page">
     <div class="project-shell">
-      <section class="project-hero">
-        <div class="project-hero__copy">
+      <nav class="subnav" aria-label="Unterseiten Navigation">
+        <a href="../index.html">Zur Startseite</a>
+        <div class="subnav__links">
+          <a href="kpi-dashboard.html">KPI Dashboard</a>
+          <a href="matchday-funnel.html">Matchday-Funnel</a>
+          <a href="checkout.html">Checkout</a>
+        </div>
+      </nav>
+
+      <section class="shop-hero">
+        <div class="shop-hero__copy">
           <p class="eyebrow">Projekt 02 · Merchandising</p>
-          <h1>Mock-Fanshop</h1>
+          <h1>Interaktive Fanshop-Demo</h1>
           <p class="project-copy">
-            Dieses Projekt zeigt meine Vorstellung von einem kompakten
-            Fanshop-Setup: klare Produktdarstellung, Aktionsflaechen fuer
-            Spieltage und ein Aufbau, der Emotion, Sortiment und Conversion
-            zusammenbringt.
+            Diese Demo ist als GitHub-Pages-taugliche Beispielseite gebaut:
+            Produktfotos, klickbare Produktdetails, Warenkorb, Checkout-Seite
+            und vorbereitete Stripe-Anbindung ueber einen Payment Link.
           </p>
           <div class="button-row">
-            <a class="button button--primary" href="../index.html#projects">Zurueck zum Portfolio</a>
-            <a class="button button--ghost" href="../projects/matchday-funnel.html">Zum Matchday-Funnel</a>
+            <a class="button button--primary" href="checkout.html">Zum Checkout</a>
+            <a class="button button--ghost" href="../index.html#projects">Zurueck zum Portfolio</a>
           </div>
         </div>
 
-        <div class="project-hero__visual">
-          <img src="../assets/mock-fanshop.jpg" alt="Laptop als Symbol fuer einen Mock-Fanshop" />
+        <div class="shop-hero__visual">
+          <img src="../assets/mock-fanshop.jpg" alt="Laptop als Sinnbild fuer einen Online-Shop" />
         </div>
       </section>
+
+      <button class="cart-launcher" id="openCart" type="button">
+        Warenkorb
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
 
       <section class="project-panel">
-        <p class="eyebrow">Shop Aufbau</p>
-        <h2>Sortiment und Angebotslogik</h2>
-        <div class="shop-grid">
-          <article class="shop-card">
-            <span class="shop-badge">Top Seller</span>
-            <h3>Home Jersey 26</h3>
-            <p>Klare Hero-Platzierung, emotionales Produktbild und direkte Groessenlogik.</p>
-            <span class="shop-card__price">89 EUR</span>
-          </article>
-          <article class="shop-card">
-            <span class="shop-badge">Matchday</span>
-            <h3>Scarf Bundle</h3>
-            <p>Bundle-Angebot fuer Heimspieltage mit hoher Sichtbarkeit im Shop.</p>
-            <span class="shop-card__price">29 EUR</span>
-          </article>
-          <article class="shop-card">
-            <span class="shop-badge">Kids</span>
-            <h3>Mini Fan Set</h3>
-            <p>Saubere Zielgruppenansprache fuer Familien und Geschenkkaeufe.</p>
-            <span class="shop-card__price">34 EUR</span>
-          </article>
+        <p class="eyebrow">Produktfinder</p>
+        <h2>Produkte filtern und direkt in den Warenkorb legen</h2>
+        <div class="shop-toolbar">
+          <label class="search-field" for="shopSearch">
+            <span>Produktsuche</span>
+            <input id="shopSearch" type="search" placeholder="z. B. Trikot, Schal, Lifestyle, Accessory" />
+          </label>
+
+          <div class="filter-chips" aria-label="Produktkategorien">
+            <button class="chip is-active" type="button" data-shop-filter="all">Alle</button>
+            <button class="chip" type="button" data-shop-filter="jersey">Trikot</button>
+            <button class="chip" type="button" data-shop-filter="accessories">Accessoires</button>
+            <button class="chip" type="button" data-shop-filter="lifestyle">Lifestyle</button>
+          </div>
+
+          <p class="shop-toolbar__hint">
+            Klick auf "Details" fuer eine groessere Produktansicht und auf "In
+            den Warenkorb" fuer den Demo-Cart.
+          </p>
         </div>
 
-        <div class="promo-strip">
-          <article class="promo-panel">
-            <h3>Warum dieser Aufbau?</h3>
-            <p>
-              Fuer einen Fanshop ist nicht nur das Produkt wichtig, sondern auch
-              das Timing: Spieltage, limitierte Aktionen und klare visuelle
-              Prioritaeten muessen im Shop schnell erfassbar sein.
-            </p>
-          </article>
-          <article class="promo-panel">
-            <h3>Mein Fokus</h3>
-            <p>
-              Produkttexte, Angebotsdarstellung, Aktionsflaechen und eine
-              Navigation, die Nutzer ohne Reibung zum passenden Artikel fuehrt.
-            </p>
-          </article>
-        </div>
+        <div class="shop-grid" id="shopGrid"></div>
+        <p class="empty-state" id="shopEmptyState" hidden>Keine Produkte passen zur aktuellen Suche.</p>
       </section>
     </div>
+
+    <div class="modal-shell" id="productModalShell" hidden>
+      <div id="productModal"></div>
+    </div>
+
+    <div class="cart-drawer-shell" id="cartDrawerShell" hidden>
+      <aside class="cart-drawer">
+        <div class="cart-drawer__head">
+          <div>
+            <p class="eyebrow">Cart</p>
+            <h2>Warenkorb</h2>
+          </div>
+          <button class="cart-drawer__close" id="closeCart" type="button" aria-label="Cart schliessen">x</button>
+        </div>
+
+        <div class="cart-list" id="cartList"></div>
+
+        <div class="cart-drawer__footer">
+          <div class="summary-line">
+            <span>Zwischensumme</span>
+            <strong id="cartSubtotal">0,00 EUR</strong>
+          </div>
+          <a class="button button--primary" href="checkout.html">Zum Checkout</a>
+        </div>
+      </aside>
+    </div>
+
+    <script src="../shop-config.js"></script>
+    <script src="../shop.js"></script>
   </body>
 </html>

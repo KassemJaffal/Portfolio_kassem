@@ -264,10 +264,10 @@ def pdf_stream() -> bytes:
     lines = [
         "q",
         "0.07 0.07 0.07 rg",
-        "36 740 523 56 re f",
+        "36 744 523 52 re f",
         "Q",
-        "BT /F1 24 Tf 48 774 Td (SCF Ecommerce KPI Dashboard) Tj ET",
-        "BT /F1 11 Tf 48 752 Td (Revenue, orders, AOV, conversion, return rate and matchday comparison.) Tj ET",
+        "BT /F1 24 Tf 48 772 Td (KPI Dashboard Uebersicht) Tj ET",
+        "BT /F1 11 Tf 48 752 Td (Klarer Bewerbungs-Ueberblick zu Umsatz, AOV, Conversion, Retourenquote und Matchday-Effekt.) Tj ET",
         "0.72 0.12 0.14 rg",
         "48 676 116 52 re f",
         "168 676 116 52 re f",
@@ -282,7 +282,7 @@ def pdf_stream() -> bytes:
         f"BT /F1 17 Tf 300 690 Td ({euro(float(SUMMARY['aov']))}) Tj ET",
         f"BT /F1 10 Tf 420 710 Td (Conversion) Tj ET",
         f"BT /F1 17 Tf 420 690 Td ({pct(float(SUMMARY['conversion']))}) Tj ET",
-        "BT /F1 13 Tf 48 648 Td (Category revenue) Tj ET",
+        "BT /F1 13 Tf 48 648 Td (Umsatz nach Kategorie) Tj ET",
     ]
 
     y = 626
@@ -292,7 +292,7 @@ def pdf_stream() -> bytes:
         y -= 20
 
     lines.extend([
-        "BT /F1 13 Tf 310 648 Td (Revenue by date) Tj ET",
+        "BT /F1 13 Tf 310 648 Td (Umsatz nach Datum) Tj ET",
     ])
 
     y = 626
@@ -302,11 +302,11 @@ def pdf_stream() -> bytes:
         y -= 20
 
     lines.extend([
-        "BT /F1 13 Tf 48 490 Td (Matchday comparison) Tj ET",
+        "BT /F1 13 Tf 48 490 Td (Matchday Vergleich) Tj ET",
         f"BT /F1 11 Tf 56 468 Td (Matchday revenue: {euro(float(SUMMARY['matchday_revenue']))}) Tj ET",
         f"BT /F1 11 Tf 56 448 Td (Non-matchday revenue: {euro(float(SUMMARY['non_matchday_revenue']))}) Tj ET",
         f"BT /F1 11 Tf 56 428 Td (Return rate: {pct(float(SUMMARY['return_rate']))}) Tj ET",
-        "BT /F1 10 Tf 48 82 Td (Created for the application portfolio website. Sample data for presentation purposes.) Tj ET",
+        "BT /F1 10 Tf 48 82 Td (Erstellt fuer die Bewerbungswebsite. Beispielwerte fuer ein E-Commerce-Reporting-Projekt.) Tj ET",
     ])
 
     return "\n".join(lines).encode("ascii")
