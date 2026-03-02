@@ -6,17 +6,24 @@
     <title>Kassem Jaffal | Bewerbung E-Commerce</title>
     <meta
       name="description"
-      content="Bewerbungswebsite von Kassem Jaffal fuer die Ausbildung im E-Commerce mit Portfolio, KPI-Dashboard, Matchday-Funnel und interaktiver Shop-Demo."
+      content="Bewerbungswebsite von Kassem Jaffal für die Ausbildung im E-Commerce mit KPI-Dashboard, Matchday-Funnel, interaktiver Shop-Demo und modernem Portfolio."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <div class="announcement-bar">
+      <div class="announcement-bar__inner">
+        <span class="announcement-bar__label">Portfolio Update</span>
+        <strong id="announcementText">Interaktive Shop-Demo, Portfolio-Suche und neue Projektseiten sind live.</strong>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="#top" aria-label="Startseite">
-          <img src="assets/freiburg-mark.svg" alt="Abstrakte rot-schwarz-weisse Marke" />
+          <img src="assets/freiburg-mark.svg" alt="Rot-schwarz-weißes Signet" />
           <span>
             <strong>Kassem Jaffal</strong>
             <small>Bewerbung E-Commerce</small>
@@ -24,145 +31,156 @@
         </a>
 
         <nav class="site-nav" aria-label="Hauptnavigation">
-          <a href="#profil">Profil</a>
-          <a href="#projects">Portfolio</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
+          <a class="site-nav__link" href="#profil">Profil</a>
+          <a class="site-nav__link" href="#portfolio">Portfolio</a>
+          <a class="site-nav__link" href="#insights">Highlights</a>
+          <a class="site-nav__link" href="#faq">FAQ</a>
+          <a class="site-nav__link" href="#kontakt">Kontakt</a>
         </nav>
 
-        <a class="button button--primary" href="projects/mock-fanshop.html">Shop-Demo</a>
+        <div class="site-header__actions">
+          <a class="button button--secondary" href="downloads/Kassem_Jaffal_Lebenslauf.pdf">Lebenslauf PDF</a>
+          <a class="button button--primary" href="projects/mock-fanshop.html">Shop-Demo</a>
+        </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero" data-section="hero">
         <div class="hero__copy">
-          <p class="eyebrow">Bewerbung fuer die Ausbildung im E-Commerce</p>
-          <h1>Digital denken. Sauber arbeiten. E-Commerce praxisnah umsetzen.</h1>
+          <p class="eyebrow">Bewerbung für die Ausbildung im E-Commerce</p>
+          <h1>Digitales Denken, Shop-Verständnis und saubere Umsetzung in einer Website.</h1>
           <p class="hero__lead">
-            Ich bewerbe mich fuer den Einstieg in ein Umfeld, in dem
-            Onlinehandel, Daten, Fan-Erlebnis und Marketing direkt
-            zusammenkommen. Mein technischer Hintergrund und meine privaten
-            E-Commerce-Projekte helfen mir dabei, schnell Verantwortung in einem
-            modernen Fanshop-Team zu uebernehmen.
+            Ich bewerbe mich für eine Ausbildung, in der Onlinehandel,
+            Marketing, Produktdarstellung und Kennzahlen zusammenkommen. Diese
+            Seite zeigt nicht nur meinen Lebenslauf, sondern auch konkrete
+            Arbeitsproben mit Bezug zu Reporting, Fanshop-Logik und Matchday-Kampagnen.
           </p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#projects">Portfolio ansehen</a>
-            <a class="button button--ghost" href="lebenslauf_sc_freiburg.md">Lebenslauf</a>
+            <a class="button button--primary" href="#portfolio">Portfolio ansehen</a>
+            <a class="button button--ghost" href="downloads/Kassem_Jaffal_Lebenslauf.pdf">Lebenslauf herunterladen</a>
           </div>
 
           <div class="hero__facts">
             <article>
               <strong>3</strong>
-              <span>relevante Projekt-Cases</span>
+              <span>Projekt-Cases mit direktem E-Commerce-Bezug</span>
+            </article>
+            <article>
+              <strong>1</strong>
+              <span>interaktive Shop-Demo mit Warenkorb und Checkout-Flow</span>
             </article>
             <article>
               <strong>IT</strong>
-              <span>technische Basis und strukturierte Denkweise</span>
-            </article>
-            <article>
-              <strong>E-Com</strong>
-              <span>private Erfahrung mit Brand-, Shop- und Funnel-Themen</span>
+              <span>technische Basis, strukturierte Arbeitsweise und Lernstärke</span>
             </article>
           </div>
         </div>
 
         <div class="hero__visual">
-          <div class="hero__badge">
-            <img src="assets/freiburg-mark.svg" alt="Abstrakte Markengrafik" />
-            <span>Schwarz. Weiss. Rot. Klarer Fokus auf Performance und Fan-Erlebnis.</span>
+          <div class="hero__mark-card">
+            <img src="assets/freiburg-mark.svg" alt="Freiburg-inspiriertes Signet" />
+            <div>
+              <p class="eyebrow">Visuelle Richtung</p>
+              <p>Schwarz, Weiß und Rot als klare, sportliche und shop-nahe Markenwelt mit Fokus auf Relevanz, Performance und modernem Look.</p>
+            </div>
           </div>
 
           <div class="hero__gallery">
-            <img src="assets/matchday-funnel.jpg" alt="Stadion und Matchday-Stimmung" loading="lazy" />
-            <img src="assets/excel-kpi-dashboard.jpg" alt="KPI-Dashboard und Analyse" loading="lazy" />
+            <img src="assets/matchday-funnel.jpg" alt="Stadionbild für Matchday-Stimmung" loading="lazy" />
+            <img src="assets/excel-kpi-dashboard.jpg" alt="Dashboard und Analyse auf einem Laptop" loading="lazy" />
             <img src="assets/product-jersey.jpg" alt="Produktfoto eines roten Jerseys" loading="lazy" />
           </div>
         </div>
       </section>
 
-      <section class="section section--profile" id="profil">
+      <section class="section section--rail">
+        <div class="info-rail">
+          <span>Shop-Logik</span>
+          <span>KPI-Verständnis</span>
+          <span>Social-Media-Denken</span>
+          <span>Matchday-Kampagnen</span>
+          <span>Produktdarstellung</span>
+          <span>Kundenfokus</span>
+        </div>
+      </section>
+
+      <section class="section" id="profil" data-section="profil">
         <div class="section-heading">
           <p class="eyebrow">Kurzprofil</p>
-          <h2>Warum mein Profil gut zur Stelle passt</h2>
+          <h2>Warum mein Profil gut zu einem modernen Fanshop-Team passt</h2>
         </div>
 
         <div class="profile-grid">
           <article class="panel panel--wide">
             <p>
-              Mein Werdegang verbindet technisches Verstaendnis, analytisches
-              Arbeiten und klares Interesse an digitalen Geschaeftsmodellen. Ich
-              habe gelernt, Prozesse strukturiert anzugehen, mich schnell in
-              Tools einzuarbeiten und Aufgaben sauber zu Ende zu bringen.
+              Mein Werdegang verbindet technisches Verständnis, analytisches
+              Denken und klares Interesse an digitalen Geschäftsmodellen. Ich
+              arbeite strukturiert, lerne schnell und bringe eine hohe
+              Affinität für Online-Shops, Angebotslogik und digitale Prozesse mit.
             </p>
             <p>
               Besonders motiviert mich der E-Commerce-Bereich, weil hier
-              Produktdarstellung, Marketing, Kennzahlen und Kundenerlebnis direkt
-              zusammenlaufen. In eigenen Projekten habe ich bereits Inhalte,
-              Angebotsseiten, digitale Brands und Social-Media-Logiken getestet.
+              Produktdarstellung, Marketing, Kennzahlen und Kundenerlebnis
+              zusammenlaufen. In privaten Projekten habe ich bereits digitale
+              Brands, Angebotsseiten, Funnel-Ideen und Social-Media-Ansätze getestet.
             </p>
           </article>
 
           <aside class="panel">
-            <h3>Was ich mitbringe</h3>
+            <h3>Stärken auf einen Blick</h3>
             <ul class="check-list">
-              <li>Interesse an Online-Shops, Verkaufslogik und digitalen Trends</li>
-              <li>Strukturierte und genaue Arbeitsweise</li>
-              <li>Gespuer fuer Zielgruppen, Content und Angebotswirkung</li>
-              <li>Hohe Lernbereitschaft und Teamfaehigkeit</li>
-              <li>Technisches Grundverstaendnis aus Informatik und Praxis</li>
+              <li>Interesse an Onlinehandel, Shop-Systemen und digitalen Trends</li>
+              <li>Strukturierte, genaue und verlässliche Arbeitsweise</li>
+              <li>Gespür für Zielgruppen, Content und Angebotswirkung</li>
+              <li>Technisches Grundverständnis aus Informatik und Praxis</li>
+              <li>Hohe Lernbereitschaft und Teamfähigkeit</li>
             </ul>
           </aside>
         </div>
       </section>
 
-      <section class="section section--trajectory">
+      <section class="section" id="insights" data-section="insights">
         <div class="section-heading">
-          <p class="eyebrow">Werdegang</p>
-          <h2>Stationen, die mich auf E-Commerce vorbereiten</h2>
+          <p class="eyebrow">Highlights</p>
+          <h2>Was Recruiter und Teams hier sofort sehen können</h2>
         </div>
 
-        <div class="trajectory-grid">
-          <article class="trajectory-card">
-            <span class="trajectory-card__year">2022</span>
-            <h3>Praktikum bei Bechtle AG</h3>
-            <p>Einblicke in professionelle IT-Prozesse, sauberes Arbeiten und technische Strukturen.</p>
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span class="insight-card__kicker">Reporting</span>
+            <h3>Klar lesbare KPI-Ansichten</h3>
+            <p>Das KPI-Dashboard zeigt, dass ich Kennzahlen wie Umsatz, AOV, Conversion und Retourenquote nachvollziehbar aufbereiten kann.</p>
           </article>
 
-          <article class="trajectory-card">
-            <span class="trajectory-card__year">2023</span>
-            <h3>Soziales Praktikum</h3>
-            <p>Verantwortung, Kommunikation, Teamverhalten und verlässlicher Umgang mit Menschen.</p>
+          <article class="insight-card">
+            <span class="insight-card__kicker">Commerce UX</span>
+            <h3>Shop-Demo mit echter Interaktion</h3>
+            <p>Produktkarten, Suchfunktion, Filter, Detailansicht, Warenkorb und Checkout zeigen ein konkretes Gefühl für Online-Shop-Erlebnisse.</p>
           </article>
 
-          <article class="trajectory-card">
-            <span class="trajectory-card__year">2025</span>
-            <h3>Abitur am Wentzinger Gymnasium</h3>
-            <p>Analytisches Denken, selbststaendige Organisation und hohe Lernfaehigkeit.</p>
-          </article>
-
-          <article class="trajectory-card">
-            <span class="trajectory-card__year">laufend</span>
-            <h3>Private E-Commerce-Projekte</h3>
-            <p>Digitale Brands, Social Media Marketing, Angebotsseiten, Funnel-Logik und Performance-Denken.</p>
+          <article class="insight-card">
+            <span class="insight-card__kicker">Marketing</span>
+            <h3>Matchday-Funnel mit Vereinsbezug</h3>
+            <p>Das Funnel-Projekt verbindet Spieltags-Dynamik mit Angebotslogik, Content-Planung und Conversion-Denken.</p>
           </article>
         </div>
       </section>
 
-      <section class="section section--portfolio" id="projects">
+      <section class="section" id="portfolio" data-section="portfolio">
         <div class="section-heading">
           <p class="eyebrow">Portfolio</p>
-          <h2>Projekte gezielt nach Thema durchsuchen</h2>
+          <h2>Projekte filtern, suchen und direkt ansehen</h2>
         </div>
 
         <div class="portfolio-toolbar">
           <label class="search-field" for="portfolioSearch">
-            <span>Suche</span>
+            <span>Suche im Portfolio</span>
             <input
               id="portfolioSearch"
               type="search"
-              placeholder="z. B. Excel, Shop, Funnel, Marketing, Daten"
+              placeholder="Zum Suchen / drücken oder z. B. Excel, Shop, Funnel eingeben"
               autocomplete="off"
             />
           </label>
@@ -181,14 +199,14 @@
           <article
             class="portfolio-card"
             data-category="reporting"
-            data-search="excel kpi dashboard reporting daten analyse conversion aov retouren matchday"
+            data-search="excel kpi dashboard reporting daten analyse conversion aov retouren matchday reporting pdf excel"
           >
-            <img src="assets/excel-kpi-dashboard.jpg" alt="Dashboard-Ansicht auf einem Laptop" loading="lazy" />
+            <img src="assets/excel-kpi-dashboard.jpg" alt="Analyseansicht auf einem Laptop" loading="lazy" />
             <div class="portfolio-card__body">
               <span class="portfolio-card__tag">Reporting</span>
               <h3>KPI Dashboard (Excel)</h3>
-              <p>Umsatz, AOV, Conversion, Retourenquote und Matchday-Vergleich in einer verstaendlichen KPI-Ansicht.</p>
-              <p class="portfolio-card__meta">Tools: Excel/Sheets, Charts, Reporting</p>
+              <p>Übersichtliche KPI-Kacheln, Matchday-Vergleich und Bewerbungs-PDF für einen schnellen Projektüberblick.</p>
+              <p class="portfolio-card__meta">Tools: Excel, Sheets, Charts, PDF, Reporting</p>
               <div class="portfolio-card__actions">
                 <a class="button button--card" href="projects/kpi-dashboard.html">Projekt</a>
                 <a class="button button--secondary" href="downloads/SCF_Ecommerce_KPI_Dashboard.pdf">PDF</a>
@@ -199,16 +217,16 @@
           <article
             class="portfolio-card"
             data-category="merchandising"
-            data-search="mock fanshop shop merchandising produktdarstellung produkttexte warenkorb checkout stripe demo"
+            data-search="shop demo fanshop merchandising checkout stripe warenkorb produktseiten filter suche"
           >
-            <img src="assets/mock-fanshop.jpg" alt="Shop-orientierter Laptop-Arbeitsplatz" loading="lazy" />
+            <img src="assets/mock-fanshop.jpg" alt="Laptop und Shop-Arbeitsplatz" loading="lazy" />
             <div class="portfolio-card__body">
               <span class="portfolio-card__tag">Merchandising</span>
               <h3>Interaktive Shop-Demo</h3>
-              <p>Produktkarten, anklickbare Details, Warenkorb, Checkout-Seite und Stripe-Vorbereitung fuer GitHub Pages.</p>
-              <p class="portfolio-card__meta">Tools: HTML, CSS, JS, Cart UX</p>
+              <p>Produktbilder, Such- und Filterfunktionen, Quick View, Warenkorb und vorbereiteter Stripe-Checkout für GitHub Pages.</p>
+              <p class="portfolio-card__meta">Tools: HTML, CSS, JavaScript, Cart UX</p>
               <div class="portfolio-card__actions">
-                <a class="button button--card" href="projects/mock-fanshop.html">Projekt</a>
+                <a class="button button--card" href="projects/mock-fanshop.html">Shop öffnen</a>
                 <a class="button button--secondary" href="projects/checkout.html">Checkout</a>
               </div>
             </div>
@@ -217,13 +235,13 @@
           <article
             class="portfolio-card"
             data-category="campaigning"
-            data-search="matchday funnel content social media kampagne traffic click sale angebot"
+            data-search="matchday funnel content social media kampagne traffic click sale angebot shop route"
           >
-            <img src="assets/matchday-funnel.jpg" alt="Stadionmotiv fuer Matchday-Kampagnen" loading="lazy" />
+            <img src="assets/matchday-funnel.jpg" alt="Stadionmotiv für Matchday-Kampagnen" loading="lazy" />
             <div class="portfolio-card__body">
               <span class="portfolio-card__tag">Campaigning</span>
               <h3>Matchday-Funnel</h3>
-              <p>Von Pre-Match-Content bis Conversion: ein Kampagnenmodell fuer Aktionen rund um Heimspiele.</p>
+              <p>Vom Teaser bis zum Sale: ein nachvollziehbares Modell für Spieltags-Kampagnen und passende Shop-Routen.</p>
               <p class="portfolio-card__meta">Tools: Content, Funnel-Logik, Kampagnenstruktur</p>
               <div class="portfolio-card__actions">
                 <a class="button button--card" href="projects/matchday-funnel.html">Projekt</a>
@@ -232,31 +250,31 @@
           </article>
         </div>
 
-        <p class="empty-state" id="portfolioEmptyState" hidden>Keine Projekte passen zu deiner Suche.</p>
+        <p class="empty-state" id="portfolioEmptyState" hidden>Keine Projekte passen zur aktuellen Suche.</p>
       </section>
 
-      <section class="section section--faq" id="faq">
+      <section class="section" id="faq" data-section="faq">
         <div class="section-heading">
-          <p class="eyebrow">FAQ ueber mich</p>
-          <h2>Die wichtigsten Fragen kurz beantwortet</h2>
+          <p class="eyebrow">FAQ über mich</p>
+          <h2>Die wichtigsten Fragen für Recruiter schnell beantwortet</h2>
         </div>
 
-        <div class="faq-list" id="faqList">
+        <div class="faq-list">
           <article class="faq-item">
             <button class="faq-trigger" type="button" aria-expanded="false">
-              Warum moechte ich in den E-Commerce-Bereich?
+              Warum möchte ich in den E-Commerce-Bereich?
             </button>
             <div class="faq-content" hidden>
-              <p>Weil mich die Verbindung aus Produkt, Shop, Marketing, Daten und Kundenerlebnis besonders reizt. Genau dort kann ich Technik und digitales Denken praktisch einsetzen.</p>
+              <p>Weil mich die Verbindung aus Produkt, Shop, Marketing, Daten und Kundenerlebnis besonders reizt. Genau dort kann ich Technik, Struktur und Lernbereitschaft praktisch einsetzen.</p>
             </div>
           </article>
 
           <article class="faq-item">
             <button class="faq-trigger" type="button" aria-expanded="false">
-              Welche Projekte sind fuer die Stelle am relevantesten?
+              Welche Projekte sind für diese Stelle am stärksten?
             </button>
             <div class="faq-content" hidden>
-              <p>Das KPI-Dashboard zeigt Zahlenverstaendnis, die Shop-Demo zeigt Produkt- und Shop-Logik, und der Matchday-Funnel zeigt Marketing-Denken mit direktem Bezug zum Vereinsumfeld.</p>
+              <p>Das KPI-Dashboard zeigt Zahlenverständnis, die Shop-Demo zeigt Produkt- und Shop-Logik und der Matchday-Funnel zeigt Marketing-Denken mit direktem Bezug zum Vereinsumfeld.</p>
             </div>
           </article>
 
@@ -265,25 +283,25 @@
               Wie arbeite ich im Team?
             </button>
             <div class="faq-content" hidden>
-              <p>Ich arbeite ruhig, strukturiert und zuverlaessig. Mir ist wichtig, Aufgaben klar zu verstehen, sauber umzusetzen und Informationen transparent weiterzugeben.</p>
+              <p>Ruhig, strukturiert und zuverlässig. Mir ist wichtig, Aufgaben klar zu verstehen, sauber umzusetzen und Informationen transparent weiterzugeben.</p>
             </div>
           </article>
 
           <article class="faq-item">
             <button class="faq-trigger" type="button" aria-expanded="false">
-              Was bringe ich fuer ein Fanshop-Team direkt mit?
+              Was zeigt die Website zusätzlich zum Lebenslauf?
             </button>
             <div class="faq-content" hidden>
-              <p>Digitale Affinitaet, Interesse an Shops und Kampagnen, Gespuer fuer Angebotsdarstellung, Motivation fuer Kennzahlen und die Bereitschaft, mich schnell in operative E-Commerce-Prozesse einzuarbeiten.</p>
+              <p>Sie zeigt echte Arbeitsproben und Denkweisen: Reporting, Shop-Aufbau, Produktdarstellung, Funnel-Logik, Such- und Filterfunktionen, Warenkorb und rechtliche Seiten.</p>
             </div>
           </article>
 
           <article class="faq-item">
             <button class="faq-trigger" type="button" aria-expanded="false">
-              Warum passt die Website zum Lebenslauf?
+              Warum ist die Website bewusst modern aufgebaut?
             </button>
             <div class="faq-content" hidden>
-              <p>Die Website zeigt nicht nur Text, sondern konkrete Arbeitsproben. Das macht meine Motivation und meine private E-Commerce-Praxis fuer Recruiter sofort nachvollziehbar.</p>
+              <p>Weil die Stelle stark in die digitale Welt eines Fanshops hineinführt. Ein moderner, sauberer Auftritt zeigt, dass ich Plattformen, Nutzerführung und digitales Storytelling ernst nehme.</p>
             </div>
           </article>
         </div>
@@ -301,25 +319,27 @@
         </div>
 
         <div>
-          <p class="eyebrow">Rechtliches</p>
-          <ul class="footer-links">
-            <li><a href="legal/impressum.html">Impressum</a></li>
-            <li><a href="legal/datenschutz.html">Datenschutz</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow">Projektlinks</p>
+          <p class="eyebrow">Website</p>
           <ul class="footer-links">
             <li><a href="projects/kpi-dashboard.html">KPI Dashboard</a></li>
             <li><a href="projects/mock-fanshop.html">Shop-Demo</a></li>
             <li><a href="projects/matchday-funnel.html">Matchday-Funnel</a></li>
+            <li><a href="projects/checkout.html">Checkout-Demo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="eyebrow">Rechtliches</p>
+          <ul class="footer-links">
+            <li><a href="legal/impressum.html">Impressum</a></li>
+            <li><a href="legal/datenschutz.html">Datenschutz</a></li>
+            <li><a href="downloads/Kassem_Jaffal_Lebenslauf.pdf">Lebenslauf PDF</a></li>
           </ul>
         </div>
       </div>
 
       <div class="site-footer__meta">
-        <p>Bildquellen: Pexels. Nicht-kommerzielle Bewerbungs- und Portfolioseite.</p>
+        <p>Bildquellen: Pexels. Portfolio- und Bewerbungsseite, keine echte Verkaufsplattform.</p>
         <a class="back-to-top" href="#top">Nach oben</a>
       </div>
     </footer>

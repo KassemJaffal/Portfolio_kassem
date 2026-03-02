@@ -9,7 +9,7 @@
   </head>
   <body class="project-page">
     <div class="project-shell">
-      <nav class="subnav" aria-label="Unterseiten Navigation">
+      <nav class="subnav" aria-label="Unterseiten-Navigation">
         <a href="../index.html">Zur Startseite</a>
         <div class="subnav__links">
           <a href="kpi-dashboard.html">KPI Dashboard</a>
@@ -23,18 +23,64 @@
           <p class="eyebrow">Projekt 02 · Merchandising</p>
           <h1>Interaktive Fanshop-Demo</h1>
           <p class="project-copy">
-            Diese Demo ist als GitHub-Pages-taugliche Beispielseite gebaut:
-            Produktfotos, klickbare Produktdetails, Warenkorb, Checkout-Seite
-            und vorbereitete Stripe-Anbindung ueber einen Payment Link.
+            Diese Demo ist wie eine moderne Shopify-Produktseite gedacht:
+            klares visuelles Merchandising, Such- und Filterfunktion, Quick
+            View, Warenkorb, Checkout-Übergang und eine statisch vorbereitete
+            Stripe-Anbindung für GitHub Pages.
           </p>
           <div class="button-row">
             <a class="button button--primary" href="checkout.html">Zum Checkout</a>
-            <a class="button button--ghost" href="../index.html#projects">Zurueck zum Portfolio</a>
+            <a class="button button--secondary" href="../downloads/Kassem_Jaffal_Lebenslauf.pdf">Lebenslauf PDF</a>
           </div>
         </div>
 
         <div class="shop-hero__visual">
-          <img src="../assets/mock-fanshop.jpg" alt="Laptop als Sinnbild fuer einen Online-Shop" />
+          <img src="../assets/mock-fanshop.jpg" alt="Laptop als Sinnbild für einen modernen Online-Shop" />
+        </div>
+      </section>
+
+      <section class="project-panel">
+        <p class="eyebrow">Trust Layer</p>
+        <h2>Elemente, die an echte Commerce-Seiten erinnern</h2>
+        <div class="trust-grid">
+          <article class="trust-card">
+            <strong>Schnelle Orientierung</strong>
+            <p>Suche, Filter, starke Produktbilder und klare Call-to-Actions für schnelle Entscheidungen.</p>
+          </article>
+          <article class="trust-card">
+            <strong>Warenkorb-Feedback</strong>
+            <p>Quick View, Cart Drawer und Checkout-Zusammenfassung machen die Demo interaktiv statt statisch.</p>
+          </article>
+          <article class="trust-card">
+            <strong>Shopify-Nähe</strong>
+            <p>Karten, Collection-Logik, Bewertungen, Trust-Badges und modernes Layout orientieren sich an aktuellen Shop-Mustern.</p>
+          </article>
+          <article class="trust-card">
+            <strong>Stripe-Vorbereitung</strong>
+            <p>Die Checkout-Seite ist so vorbereitet, dass nur noch ein echter Stripe Payment Link eingetragen werden muss.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-panel">
+        <p class="eyebrow">Collections</p>
+        <h2>Visuelle Shop-Einstiege</h2>
+        <div class="collection-grid">
+          <article class="collection-card">
+            <img src="../assets/product-jersey.jpg" alt="Rotes Trikot als Key Visual" loading="lazy" />
+            <strong>Matchday Essentials</strong>
+            <p>Produkte mit hoher Spieltags-Relevanz, klarer Startseitenwirkung und starker Emotionalität.</p>
+          </article>
+          <article class="collection-card">
+            <img src="../assets/product-scarf.jpg" alt="Schal als Merchandising-Produkt" loading="lazy" />
+            <strong>Fan Accessoires</strong>
+            <p>Zusatzprodukte für Impulskäufe, Bundles und sichtbare Aktionsflächen im Shop.</p>
+          </article>
+          <article class="collection-card">
+            <img src="../assets/product-rack.jpg" alt="Merchandise auf Kleiderständer" loading="lazy" />
+            <strong>Lifestyle & Daily Wear</strong>
+            <p>Artikel für Fans, die Verein, Alltag und Stil in einem moderneren Sortiment verbinden wollen.</p>
+          </article>
         </div>
       </section>
 
@@ -45,28 +91,47 @@
 
       <section class="project-panel">
         <p class="eyebrow">Produktfinder</p>
-        <h2>Produkte filtern und direkt in den Warenkorb legen</h2>
+        <h2>Produkte suchen, filtern und direkt in den Warenkorb legen</h2>
         <div class="shop-toolbar">
           <label class="search-field" for="shopSearch">
             <span>Produktsuche</span>
-            <input id="shopSearch" type="search" placeholder="z. B. Trikot, Schal, Lifestyle, Accessory" />
+            <input id="shopSearch" type="search" placeholder="z. B. Trikot, Schal, Lifestyle oder Tasche" />
           </label>
 
           <div class="filter-chips" aria-label="Produktkategorien">
             <button class="chip is-active" type="button" data-shop-filter="all">Alle</button>
-            <button class="chip" type="button" data-shop-filter="jersey">Trikot</button>
+            <button class="chip" type="button" data-shop-filter="jersey">Trikots</button>
             <button class="chip" type="button" data-shop-filter="accessories">Accessoires</button>
             <button class="chip" type="button" data-shop-filter="lifestyle">Lifestyle</button>
           </div>
 
           <p class="shop-toolbar__hint">
-            Klick auf "Details" fuer eine groessere Produktansicht und auf "In
-            den Warenkorb" fuer den Demo-Cart.
+            Klick auf „Details“ für eine größere Produktansicht oder lege Artikel
+            direkt in den Demo-Warenkorb.
           </p>
         </div>
 
         <div class="shop-grid" id="shopGrid"></div>
         <p class="empty-state" id="shopEmptyState" hidden>Keine Produkte passen zur aktuellen Suche.</p>
+      </section>
+
+      <section class="project-panel">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Weitere Elemente für einen glaubwürdigen Shop-Auftritt</h2>
+        <div class="review-grid">
+          <article class="review-card">
+            <strong>„Sehr klare Struktur“</strong>
+            <p>Die Demo zeigt, wie Produkte, Kategorien und Aktionen visuell sauber zusammengeführt werden können.</p>
+          </article>
+          <article class="review-card">
+            <strong>„Gute Produktführung“</strong>
+            <p>Quick View, Variantenwahl und Cart Drawer machen die Nutzerführung nachvollziehbar und praktisch.</p>
+          </article>
+          <article class="review-card">
+            <strong>„Modern und relevant“</strong>
+            <p>Die Mischung aus sportlicher Markenwirkung und Shopify-artigem Commerce-Look passt gut zum Bewerbungskontext.</p>
+          </article>
+        </div>
       </section>
     </div>
 
@@ -81,7 +146,7 @@
             <p class="eyebrow">Cart</p>
             <h2>Warenkorb</h2>
           </div>
-          <button class="cart-drawer__close" id="closeCart" type="button" aria-label="Cart schliessen">x</button>
+          <button class="cart-drawer__close" id="closeCart" type="button" aria-label="Warenkorb schließen">×</button>
         </div>
 
         <div class="cart-list" id="cartList"></div>
@@ -95,6 +160,8 @@
         </div>
       </aside>
     </div>
+
+    <div class="toast" id="shopToast" hidden>Produkt wurde in den Warenkorb gelegt.</div>
 
     <script src="../shop-config.js"></script>
     <script src="../shop.js"></script>

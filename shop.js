@@ -9,9 +9,16 @@ const SHOP_PRODUCTS = [
     category: "jersey",
     image: "../assets/product-jersey.jpg",
     alt: "Rotes Jersey als Produktfoto",
+    rating: "4.9 / 5",
+    colors: ["Rot", "Schwarz"],
+    sizes: ["S", "M", "L", "XL"],
     description:
-      "Hero-Produkt fuer eine Fanshop-Startseite. Starker visueller Fokus, klare Groessenwahl und direkte Kaufintention.",
-    bullets: ["Kategorie: Trikot", "Groessenlogik S-XXL", "Bundle-faehig fuer Spieltage"]
+      "Hero-Produkt für eine Fanshop-Startseite mit starker Bildwirkung, klarer Größenauswahl und hoher Kaufintention.",
+    bullets: [
+      "Kategorie: Trikot",
+      "Größenlogik für den Produktflow",
+      "Bundle-fähig für Spieltage"
+    ]
   },
   {
     id: "matchday-scarf",
@@ -21,9 +28,16 @@ const SHOP_PRODUCTS = [
     category: "accessories",
     image: "../assets/product-scarf.jpg",
     alt: "Schal als Beispielprodukt",
+    rating: "4.8 / 5",
+    colors: ["Rot", "Weiß"],
+    sizes: ["One Size"],
     description:
-      "Emotionales Zusatzprodukt fuer Matchday-Aktionen und schnelle Impulskäufe im Fanshop.",
-    bullets: ["Kategorie: Accessory", "Ideal fuer Aktionsflaechen", "Gut fuer Bundle-Angebote"]
+      "Emotionales Zusatzprodukt für Matchday-Aktionen, Bundles und schnelle Impulskäufe im Fanshop.",
+    bullets: [
+      "Kategorie: Accessoire",
+      "Gut für Cross-Selling",
+      "Sichtbar auf Aktionsflächen"
+    ]
   },
   {
     id: "stadium-runner",
@@ -33,9 +47,16 @@ const SHOP_PRODUCTS = [
     category: "lifestyle",
     image: "../assets/product-sneaker.jpg",
     alt: "Sneaker als Lifestyle-Produkt",
+    rating: "4.7 / 5",
+    colors: ["Schwarz", "Grau"],
+    sizes: ["40", "41", "42", "43", "44"],
     description:
-      "Lifestyle-Produkt fuer Sortimentsbreite, Cross-Selling und Zielgruppen ausserhalb des klassischen Spieltags.",
-    bullets: ["Kategorie: Lifestyle", "Cross-Sell tauglich", "Visuell stark fuer Social Assets"]
+      "Lifestyle-Produkt für Sortimentsbreite, Social Assets und Zielgruppen außerhalb des klassischen Spieltags.",
+    bullets: [
+      "Kategorie: Lifestyle",
+      "Visuell stark für Social Content",
+      "Geeignet für Landingpage-Features"
+    ]
   },
   {
     id: "city-supporter-bag",
@@ -45,15 +66,39 @@ const SHOP_PRODUCTS = [
     category: "accessories",
     image: "../assets/product-rack.jpg",
     alt: "Produktfoto von Kleidung und Stofftaschen",
+    rating: "4.8 / 5",
+    colors: ["Natur", "Schwarz"],
+    sizes: ["One Size"],
     description:
-      "Alltagsnahes Merch-Produkt fuer Fans, die Verein und Lifestyle verbinden wollen.",
-    bullets: ["Kategorie: Tasche", "Gute Geschenkoption", "Klarer Nutzen im Alltag"]
+      "Alltagsnahes Merch-Produkt für Fans, die Verein, Stil und Nutzwert in einem moderneren Sortiment verbinden wollen.",
+    bullets: [
+      "Kategorie: Tasche",
+      "Gute Geschenkoption",
+      "Alltagsprodukt mit Fanbezug"
+    ]
   }
 ];
 
+function defaultVariant(product) {
+  return {
+    size: product.sizes?.[0] || "",
+    color: product.colors?.[0] || ""
+  };
+}
+
+function normalizeCartItem(item) {
+  return {
+    id: item.id,
+    quantity: Number(item.quantity) > 0 ? Number(item.quantity) : 1,
+    size: item.size || "",
+    color: item.color || ""
+  };
+}
+
 function readCart() {
   try {
-    return JSON.parse(localStorage.getItem(SHOP_STORAGE_KEY) || "[]");
+    const raw = JSON.parse(localStorage.getItem(SHOP_STORAGE_KEY) || "[]");
+    return Array.isArray(raw) ? raw.map(normalizeCartItem).filter((item) => item.id) : [];
   } catch {
     return [];
   }
@@ -67,6 +112,11 @@ function getProduct(productId) {
   return SHOP_PRODUCTS.find((product) => product.id === productId);
 }
 
+function getVariantLabel(item) {
+  const parts = [item.size, item.color].filter(Boolean);
+  return parts.length ? parts.join(" / ") : "Standard";
+}
+
 function cartSubtotal(cart) {
   return cart.reduce((total, item) => {
     const product = getProduct(item.id);
@@ -78,26 +128,55 @@ function formatCurrency(value) {
   return `${value.toFixed(2).replace(".", ",")} EUR`;
 }
 
-function addToCart(productId, quantity = 1) {
+function showToast(message) {
+  const toast = document.getElementById("shopToast");
+  if (!toast) {
+    return;
+  }
+
+  toast.textContent = message;
+  toast.hidden = false;
+  window.clearTimeout(showToast.timeoutId);
+  showToast.timeoutId = window.setTimeout(() => {
+    toast.hidden = true;
+  }, 2200);
+}
+
+function addToCart(productId, options = {}) {
+  const product = getProduct(productId);
+  if (!product) {
+    return;
+  }
+
+  const variant = defaultVariant(product);
+  const size = options.size || variant.size;
+  const color = options.color || variant.color;
+  const quantity = Math.max(1, Number(options.quantity) || 1);
   const cart = readCart();
-  const existing = cart.find((item) => item.id === productId);
+  const existing = cart.find(
+    (item) => item.id === productId && item.size === size && item.color === color
+  );
 
   if (existing) {
     existing.quantity += quantity;
   } else {
-    cart.push({ id: productId, quantity });
+    cart.push({ id: productId, quantity, size, color });
   }
 
   writeCart(cart);
   renderCart();
   renderCheckout();
+  showToast(`${product.title} wurde in den Warenkorb gelegt.`);
 }
 
-function changeQuantity(productId, delta) {
+function changeQuantity(productId, size, color, delta) {
   const cart = readCart()
-    .map((item) =>
-      item.id === productId ? { ...item, quantity: item.quantity + delta } : item
-    )
+    .map((item) => {
+      if (item.id === productId && item.size === size && item.color === color) {
+        return { ...item, quantity: item.quantity + delta };
+      }
+      return item;
+    })
     .filter((item) => item.quantity > 0);
 
   writeCart(cart);
@@ -117,6 +196,14 @@ function closeElement(element) {
   }
 }
 
+function normalize(text) {
+  return (text || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 function renderShopProducts() {
   const grid = document.getElementById("shopGrid");
   if (!grid) {
@@ -129,14 +216,13 @@ function renderShopProducts() {
   let activeFilter = "all";
 
   function applyFilters() {
-    const term = (search.value || "").trim().toLowerCase();
+    const term = normalize(search?.value || "");
     let visible = 0;
 
     [...grid.children].forEach((card) => {
       const matchesFilter =
         activeFilter === "all" || card.dataset.category === activeFilter;
-      const matchesSearch =
-        term === "" || (card.dataset.search || "").toLowerCase().includes(term);
+      const matchesSearch = term === "" || normalize(card.dataset.search).includes(term);
       const show = matchesFilter && matchesSearch;
       card.hidden = !show;
       if (show) {
@@ -144,7 +230,9 @@ function renderShopProducts() {
       }
     });
 
-    emptyState.hidden = visible !== 0;
+    if (emptyState) {
+      emptyState.hidden = visible !== 0;
+    }
   }
 
   grid.innerHTML = "";
@@ -153,12 +241,25 @@ function renderShopProducts() {
     const card = document.createElement("article");
     card.className = "shop-card";
     card.dataset.category = product.category;
-    card.dataset.search = `${product.title} ${product.tag} ${product.description} ${product.category}`;
+    card.dataset.search = [
+      product.title,
+      product.tag,
+      product.description,
+      product.category,
+      product.colors.join(" "),
+      product.sizes.join(" ")
+    ].join(" ");
     card.innerHTML = `
       <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-      <span class="shop-card__tag">${product.tag}</span>
+      <div class="shop-card__topline">
+        <span class="shop-card__tag">${product.tag}</span>
+        <span class="shop-card__rating">${product.rating}</span>
+      </div>
       <h3>${product.title}</h3>
       <p>${product.description}</p>
+      <div class="product-meta">
+        ${product.bullets.slice(0, 2).map((item) => `<span class="product-chip">${item}</span>`).join("")}
+      </div>
       <div class="shop-card__meta">
         <span class="shop-card__price">${formatCurrency(product.price)}</span>
         <span class="shop-toolbar__hint">${product.category}</span>
@@ -184,7 +285,7 @@ function renderShopProducts() {
 
     const addId = target.dataset.add;
     if (addId) {
-      addToCart(addId, 1);
+      addToCart(addId);
       openElement(document.getElementById("cartDrawerShell"));
     }
   });
@@ -197,7 +298,10 @@ function renderShopProducts() {
     });
   });
 
-  search.addEventListener("input", applyFilters);
+  if (search) {
+    search.addEventListener("input", applyFilters);
+  }
+
   applyFilters();
 }
 
@@ -210,15 +314,40 @@ function renderProductModal(productId) {
     return;
   }
 
+  const initialVariant = defaultVariant(product);
+  let selectedSize = initialVariant.size;
+  let selectedColor = initialVariant.color;
+  let quantity = 1;
+
   container.innerHTML = `
     <div class="product-modal__card">
       <img src="${product.image}" alt="${product.alt}" />
       <div class="product-modal__copy">
-        <span class="shop-card__tag">${product.tag}</span>
-        <h2>${product.title}</h2>
-        <p class="project-copy">${product.description}</p>
+        <div class="shop-card__topline">
+          <span class="shop-card__tag">${product.tag}</span>
+          <span class="shop-card__rating">${product.rating}</span>
+        </div>
+        <div>
+          <h2>${product.title}</h2>
+          <p class="project-copy">${product.description}</p>
+        </div>
         <div class="product-meta">
           ${product.bullets.map((item) => `<span class="product-chip">${item}</span>`).join("")}
+        </div>
+        <div>
+          <strong>${formatCurrency(product.price)}</strong>
+        </div>
+        <div class="variant-block">
+          <p class="eyebrow">Größe</p>
+          <div class="variant-row" id="sizeRow">
+            ${product.sizes.map((size) => `<button class="size-chip${size === selectedSize ? " is-active" : ""}" type="button" data-size="${size}">${size}</button>`).join("")}
+          </div>
+        </div>
+        <div class="variant-block">
+          <p class="eyebrow">Farbe</p>
+          <div class="variant-row" id="colorRow">
+            ${product.colors.map((color) => `<button class="color-chip${color === selectedColor ? " is-active" : ""}" type="button" data-color="${color}">${color}</button>`).join("")}
+          </div>
         </div>
         <div class="qty-row">
           <button class="qty-button" type="button" id="qtyMinus">-</button>
@@ -235,21 +364,43 @@ function renderProductModal(productId) {
 
   openElement(shell);
 
-  let quantity = 1;
   const qtyValue = document.getElementById("qtyValue");
+  const setActive = (selector, value, dataKey) => {
+    container.querySelectorAll(selector).forEach((button) => {
+      button.classList.toggle("is-active", button.dataset[dataKey] === value);
+    });
+  };
+
+  container.querySelectorAll("[data-size]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedSize = button.dataset.size || "";
+      setActive(".size-chip", selectedSize, "size");
+    });
+  });
+
+  container.querySelectorAll("[data-color]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedColor = button.dataset.color || "";
+      setActive(".color-chip", selectedColor, "color");
+    });
+  });
+
   document.getElementById("qtyMinus").addEventListener("click", () => {
     quantity = Math.max(1, quantity - 1);
     qtyValue.textContent = String(quantity);
   });
+
   document.getElementById("qtyPlus").addEventListener("click", () => {
     quantity += 1;
     qtyValue.textContent = String(quantity);
   });
+
   document.getElementById("modalAddToCart").addEventListener("click", () => {
-    addToCart(product.id, quantity);
+    addToCart(product.id, { quantity, size: selectedSize, color: selectedColor });
     closeElement(shell);
     openElement(document.getElementById("cartDrawerShell"));
   });
+
   document.getElementById("closeProductModal").addEventListener("click", () => {
     closeElement(shell);
   });
@@ -286,10 +437,11 @@ function renderCart() {
           <img src="${product.image}" alt="${product.alt}" />
           <div class="cart-item__copy">
             <strong>${product.title}</strong>
+            <span>${getVariantLabel(item)}</span>
             <span>${formatCurrency(product.price)} x ${item.quantity}</span>
             <div class="button-row">
-              <button class="button button--secondary" type="button" data-cart-change="${product.id}" data-delta="-1">-1</button>
-              <button class="button button--secondary" type="button" data-cart-change="${product.id}" data-delta="1">+1</button>
+              <button class="button button--secondary" type="button" data-cart-id="${product.id}" data-cart-size="${item.size}" data-cart-color="${item.color}" data-delta="-1">-1</button>
+              <button class="button button--secondary" type="button" data-cart-id="${product.id}" data-cart-size="${item.size}" data-cart-color="${item.color}" data-delta="1">+1</button>
             </div>
           </div>
           <strong>${formatCurrency(product.price * item.quantity)}</strong>
@@ -300,9 +452,14 @@ function renderCart() {
 
   subtotal.textContent = formatCurrency(cartSubtotal(cart));
 
-  list.querySelectorAll("[data-cart-change]").forEach((button) => {
+  list.querySelectorAll("[data-cart-id]").forEach((button) => {
     button.addEventListener("click", () => {
-      changeQuantity(button.dataset.cartChange, Number(button.dataset.delta));
+      changeQuantity(
+        button.dataset.cartId,
+        button.dataset.cartSize || "",
+        button.dataset.cartColor || "",
+        Number(button.dataset.delta)
+      );
     });
   });
 }
@@ -318,7 +475,11 @@ function renderCheckout() {
   }
 
   const cart = readCart();
-  if (cart.length === 0) {
+  const paymentLink = (window.SHOP_CONFIG && window.SHOP_CONFIG.stripePaymentLink) || "";
+  const notice = (window.SHOP_CONFIG && window.SHOP_CONFIG.shopNotice) || "";
+  const hasItems = cart.length > 0;
+
+  if (!hasItems) {
     list.innerHTML = `<p class="cart-empty">Noch keine Produkte im Warenkorb. Gehe zur Shop-Demo und lege Beispielprodukte hinein.</p>`;
     total.textContent = formatCurrency(0);
   } else {
@@ -330,7 +491,7 @@ function renderCheckout() {
         }
         return `
           <div class="summary-line">
-            <span>${product.title} x ${item.quantity}</span>
+            <span>${product.title} (${getVariantLabel(item)}) x ${item.quantity}</span>
             <strong>${formatCurrency(product.price * item.quantity)}</strong>
           </div>
         `;
@@ -339,23 +500,21 @@ function renderCheckout() {
     total.textContent = formatCurrency(cartSubtotal(cart));
   }
 
-  const paymentLink = (window.SHOP_CONFIG && window.SHOP_CONFIG.stripePaymentLink) || "";
-  const notice = (window.SHOP_CONFIG && window.SHOP_CONFIG.shopNotice) || "";
-
-  if (paymentLink) {
+  if (paymentLink && hasItems) {
     stripeButton.disabled = false;
     stripeButton.textContent = "Weiter zu Stripe Checkout";
     stripeHint.textContent =
-      "Der Demo-Checkout ist vorbereitet und leitet jetzt auf einen echten Stripe Payment Link weiter.";
+      "Die Demo ist vorbereitet und leitet mit einem echten Payment Link an Stripe weiter.";
     stripeButton.onclick = () => {
       window.location.href = paymentLink;
     };
-  } else {
-    stripeButton.disabled = true;
-    stripeButton.textContent = "Stripe-Link fehlt";
-    stripeHint.textContent = notice;
-    stripeButton.onclick = null;
+    return;
   }
+
+  stripeButton.disabled = true;
+  stripeButton.textContent = hasItems ? "Stripe-Link fehlt" : "Warenkorb leer";
+  stripeHint.textContent = hasItems ? notice : "Lege zuerst Produkte in den Demo-Warenkorb.";
+  stripeButton.onclick = null;
 }
 
 function bindOverlays() {
@@ -381,6 +540,14 @@ function bindOverlays() {
         closeElement(shell);
       }
     });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+    closeElement(productModalShell);
+    closeElement(cartDrawerShell);
   });
 }
 

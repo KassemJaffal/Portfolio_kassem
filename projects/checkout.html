@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout Demo | Kassem Jaffal</title>
+    <title>Checkout-Demo | Kassem Jaffal</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../projects.css" />
   </head>
   <body class="project-page">
     <div class="project-shell">
-      <nav class="subnav" aria-label="Unterseiten Navigation">
+      <nav class="subnav" aria-label="Unterseiten-Navigation">
         <a href="../index.html">Zur Startseite</a>
         <div class="subnav__links">
-          <a href="mock-fanshop.html">Zur Shop-Demo</a>
+          <a href="mock-fanshop.html">Shop-Demo</a>
           <a href="kpi-dashboard.html">KPI Dashboard</a>
         </div>
       </nav>
@@ -20,16 +20,21 @@
       <section class="project-hero">
         <div class="project-hero__copy">
           <p class="eyebrow">Checkout Demo</p>
-          <h1>Checkout mit Stripe vorbereiten</h1>
+          <h1>Checkout mit Stripe vorbereitet</h1>
           <p class="project-copy">
-            Auf GitHub Pages ist dies als statischer Checkout-Flow aufgebaut.
-            Der Warenkorb bleibt im Browser gespeichert. Ein echter Stripe-Start
-            funktioniert, sobald in `shop-config.js` ein Payment Link gesetzt ist.
+            Diese Seite zeigt einen klaren, modernen Checkout-Aufbau für eine
+            statische Demo. Der Warenkorb bleibt lokal im Browser erhalten. Für
+            einen echten Stripe-Start muss nur noch in der Konfiguration ein
+            Payment Link hinterlegt werden.
           </p>
+          <div class="button-row">
+            <a class="button button--primary" href="mock-fanshop.html">Zurück zum Shop</a>
+            <a class="button button--secondary" href="../legal/datenschutz.html">Datenschutz</a>
+          </div>
         </div>
 
         <div class="project-hero__visual">
-          <img src="../assets/product-rack.jpg" alt="Merchandise als Checkout-Hintergrund" />
+          <img src="../assets/product-rack.jpg" alt="Merchandise als Checkout-Keyvisual" />
         </div>
       </section>
 
@@ -53,7 +58,7 @@
               </label>
               <label>
                 <span class="checkout-label">Lieferadresse</span>
-                <textarea placeholder="Strasse, Hausnummer, PLZ, Ort"></textarea>
+                <textarea placeholder="Straße, Hausnummer, PLZ, Ort"></textarea>
               </label>
               <label>
                 <span class="checkout-label">Versandart</span>
@@ -67,7 +72,7 @@
           </article>
 
           <article class="checkout-box">
-            <h3>Order Summary</h3>
+            <h3>Bestellübersicht</h3>
             <div class="summary-list" id="checkoutSummary"></div>
             <div class="summary-line">
               <span>Gesamtsumme</span>
@@ -79,9 +84,9 @@
               <a class="button button--ghost" href="mock-fanshop.html">Weiter shoppen</a>
             </div>
             <p class="checkout-note checkout-note--warning">
-              Hinweis: Ein dynamischer Mehrprodukt-Stripe-Checkout braucht auf
-              einer statischen GitHub-Pages-Seite entweder Payment Links pro
-              Checkout oder eine serverseitige Session-Erzeugung.
+              Hinweis: Ein echter Mehrprodukt-Checkout über Stripe benötigt auf
+              GitHub Pages am einfachsten Payment Links oder einen eigenen
+              serverseitigen Checkout-Flow.
             </p>
           </article>
         </div>

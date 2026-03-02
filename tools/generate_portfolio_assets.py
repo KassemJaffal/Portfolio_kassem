@@ -2,14 +2,15 @@ from __future__ import annotations
 
 import csv
 import math
+import zipfile
 from datetime import date
 from pathlib import Path
 from xml.sax.saxutils import escape
-import zipfile
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DOWNLOADS = ROOT / "downloads"
+WEBSITE_URL = "https://retupzu.github.io/sc-freiburg-bewerbung/"
 
 
 DATA = [
@@ -257,101 +258,190 @@ def write_xlsx() -> None:
         archive.writestr("xl/worksheets/sheet2.xml", build_sheet(dashboard_rows))
 
 
-def pdf_stream() -> bytes:
-    revenue_by_category = SUMMARY["revenue_by_category"]
-    revenue_by_day = SUMMARY["revenue_by_day"]
-
-    lines = [
-        "q",
-        "0.07 0.07 0.07 rg",
-        "36 744 523 52 re f",
-        "Q",
-        "BT /F1 24 Tf 48 772 Td (KPI Dashboard Uebersicht) Tj ET",
-        "BT /F1 11 Tf 48 752 Td (Klarer Bewerbungs-Ueberblick zu Umsatz, AOV, Conversion, Retourenquote und Matchday-Effekt.) Tj ET",
-        "0.72 0.12 0.14 rg",
-        "48 676 116 52 re f",
-        "168 676 116 52 re f",
-        "288 676 116 52 re f",
-        "408 676 116 52 re f",
-        "0 0 0 rg",
-        f"BT /F1 10 Tf 60 710 Td (Revenue) Tj ET",
-        f"BT /F1 17 Tf 60 690 Td ({euro(float(SUMMARY['revenue']))}) Tj ET",
-        f"BT /F1 10 Tf 180 710 Td (Orders) Tj ET",
-        f"BT /F1 17 Tf 180 690 Td ({int(SUMMARY['orders'])}) Tj ET",
-        f"BT /F1 10 Tf 300 710 Td (AOV) Tj ET",
-        f"BT /F1 17 Tf 300 690 Td ({euro(float(SUMMARY['aov']))}) Tj ET",
-        f"BT /F1 10 Tf 420 710 Td (Conversion) Tj ET",
-        f"BT /F1 17 Tf 420 690 Td ({pct(float(SUMMARY['conversion']))}) Tj ET",
-        "BT /F1 13 Tf 48 648 Td (Umsatz nach Kategorie) Tj ET",
-    ]
-
-    y = 626
-    for category, value in revenue_by_category.items():
-        lines.append(f"BT /F1 11 Tf 56 {y} Td ({category}) Tj ET")
-        lines.append(f"BT /F1 11 Tf 180 {y} Td ({euro(float(value))}) Tj ET")
-        y -= 20
-
-    lines.extend([
-        "BT /F1 13 Tf 310 648 Td (Umsatz nach Datum) Tj ET",
-    ])
-
-    y = 626
-    for day, value in revenue_by_day.items():
-        lines.append(f"BT /F1 11 Tf 318 {y} Td ({day}) Tj ET")
-        lines.append(f"BT /F1 11 Tf 418 {y} Td ({euro(float(value))}) Tj ET")
-        y -= 20
-
-    lines.extend([
-        "BT /F1 13 Tf 48 490 Td (Matchday Vergleich) Tj ET",
-        f"BT /F1 11 Tf 56 468 Td (Matchday revenue: {euro(float(SUMMARY['matchday_revenue']))}) Tj ET",
-        f"BT /F1 11 Tf 56 448 Td (Non-matchday revenue: {euro(float(SUMMARY['non_matchday_revenue']))}) Tj ET",
-        f"BT /F1 11 Tf 56 428 Td (Return rate: {pct(float(SUMMARY['return_rate']))}) Tj ET",
-        "BT /F1 10 Tf 48 82 Td (Erstellt fuer die Bewerbungswebsite. Beispielwerte fuer ein E-Commerce-Reporting-Projekt.) Tj ET",
-    ])
-
-    return "\n".join(lines).encode("ascii")
+def ascii_safe(value: str) -> str:
+    replacements = {
+        "ä": "ae",
+        "ö": "oe",
+        "ü": "ue",
+        "Ä": "Ae",
+        "Ö": "Oe",
+        "Ü": "Ue",
+        "ß": "ss",
+        "·": "-",
+        "–": "-",
+        "—": "-",
+        "’": "'",
+        "“": '"',
+        "”": '"',
+    }
+    return "".join(replacements.get(char, char if ord(char) < 128 else "") for char in value)
 
 
-def write_pdf() -> None:
-    content = pdf_stream()
-    objects = [
-        b"<< /Type /Catalog /Pages 2 0 R >>",
-        b"<< /Type /Pages /Count 1 /Kids [3 0 R] >>",
-        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>",
-        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
-        b"<< /Length " + str(len(content)).encode("ascii") + b" >>\nstream\n" + content + b"\nendstream",
-    ]
+def escape_pdf(value: str) -> str:
+    return ascii_safe(value).replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+
+
+def pdf_text(x: int, y: int, text: str, *, size: int = 11, font: str = "F1") -> str:
+    return f"BT /{font} {size} Tf {x} {y} Td ({escape_pdf(text)}) Tj ET"
+
+
+def pdf_fill(x: int, y: int, width: int, height: int, *, rgb: tuple[float, float, float]) -> str:
+    red, green, blue = rgb
+    return f"{red:.2f} {green:.2f} {blue:.2f} rg\n{x} {y} {width} {height} re f"
+
+
+def build_pdf(pages: list[bytes]) -> bytes:
+    page_count = len(pages)
+    catalog_id = 1
+    pages_id = 2
+    regular_font_id = 3
+    bold_font_id = 4
+    page_ids = [5 + index for index in range(page_count)]
+    content_ids = [5 + page_count + index for index in range(page_count)]
+
+    objects: dict[int, bytes] = {
+        catalog_id: f"<< /Type /Catalog /Pages {pages_id} 0 R >>".encode("ascii"),
+        pages_id: (
+            f"<< /Type /Pages /Count {page_count} /Kids [{' '.join(f'{page_id} 0 R' for page_id in page_ids)}] >>"
+        ).encode("ascii"),
+        regular_font_id: b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+        bold_font_id: b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>",
+    }
+
+    for index, content in enumerate(pages):
+        page_id = page_ids[index]
+        content_id = content_ids[index]
+        objects[page_id] = (
+            f"<< /Type /Page /Parent {pages_id} 0 R /MediaBox [0 0 595 842] "
+            f"/Resources << /Font << /F1 {regular_font_id} 0 R /F2 {bold_font_id} 0 R >> >> "
+            f"/Contents {content_id} 0 R >>"
+        ).encode("ascii")
+        objects[content_id] = b"<< /Length " + str(len(content)).encode("ascii") + b" >>\nstream\n" + content + b"\nendstream"
 
     pdf = bytearray(b"%PDF-1.4\n")
     offsets = [0]
-    for index, obj in enumerate(objects, start=1):
+    for object_id in range(1, max(objects) + 1):
         offsets.append(len(pdf))
-        pdf.extend(f"{index} 0 obj\n".encode("ascii"))
-        pdf.extend(obj)
+        pdf.extend(f"{object_id} 0 obj\n".encode("ascii"))
+        pdf.extend(objects[object_id])
         pdf.extend(b"\nendobj\n")
 
     xref_offset = len(pdf)
-    pdf.extend(f"xref\n0 {len(objects) + 1}\n".encode("ascii"))
+    pdf.extend(f"xref\n0 {max(objects) + 1}\n".encode("ascii"))
     pdf.extend(b"0000000000 65535 f \n")
     for offset in offsets[1:]:
         pdf.extend(f"{offset:010d} 00000 n \n".encode("ascii"))
     pdf.extend(
         (
             "trailer\n"
-            f"<< /Size {len(objects) + 1} /Root 1 0 R >>\n"
+            f"<< /Size {max(objects) + 1} /Root {catalog_id} 0 R >>\n"
             "startxref\n"
             f"{xref_offset}\n"
             "%%EOF\n"
         ).encode("ascii")
     )
+    return bytes(pdf)
 
-    (DOWNLOADS / "SCF_Ecommerce_KPI_Dashboard.pdf").write_bytes(pdf)
+
+def kpi_pdf_stream() -> bytes:
+    revenue_by_category = SUMMARY["revenue_by_category"]
+    revenue_by_day = SUMMARY["revenue_by_day"]
+
+    lines = [
+        "q",
+        pdf_fill(36, 744, 523, 56, rgb=(0.05, 0.05, 0.05)),
+        "Q",
+        pdf_text(48, 772, "KPI Dashboard Uebersicht", size=24, font="F2"),
+        pdf_text(48, 752, "Bewerbungsprojekt zu Umsatz, AOV, Conversion, Retourenquote und Matchday-Effekt.", size=11),
+        pdf_fill(48, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
+        pdf_fill(168, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
+        pdf_fill(288, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
+        pdf_fill(408, 676, 116, 52, rgb=(0.72, 0.12, 0.14)),
+        pdf_text(60, 710, "Revenue", size=10),
+        pdf_text(60, 690, euro(float(SUMMARY["revenue"])), size=17, font="F2"),
+        pdf_text(180, 710, "Orders", size=10),
+        pdf_text(180, 690, str(int(SUMMARY["orders"])), size=17, font="F2"),
+        pdf_text(300, 710, "AOV", size=10),
+        pdf_text(300, 690, euro(float(SUMMARY["aov"])), size=17, font="F2"),
+        pdf_text(420, 710, "Conversion", size=10),
+        pdf_text(420, 690, pct(float(SUMMARY["conversion"])), size=17, font="F2"),
+        pdf_text(48, 648, "Umsatz nach Kategorie", size=13, font="F2"),
+        pdf_text(310, 648, "Umsatz nach Datum", size=13, font="F2"),
+    ]
+
+    y = 626
+    for category, value in revenue_by_category.items():
+        lines.append(pdf_text(56, y, category, size=11))
+        lines.append(pdf_text(180, y, euro(float(value)), size=11, font="F2"))
+        y -= 20
+
+    y = 626
+    for day, value in revenue_by_day.items():
+        lines.append(pdf_text(318, y, day, size=11))
+        lines.append(pdf_text(418, y, euro(float(value)), size=11, font="F2"))
+        y -= 20
+
+    lines.extend([
+        pdf_text(48, 490, "Matchday Vergleich", size=13, font="F2"),
+        pdf_text(56, 468, f"Matchday revenue: {euro(float(SUMMARY['matchday_revenue']))}", size=11),
+        pdf_text(56, 448, f"Non-matchday revenue: {euro(float(SUMMARY['non_matchday_revenue']))}", size=11),
+        pdf_text(56, 428, f"Return rate: {pct(float(SUMMARY['return_rate']))}", size=11),
+        pdf_text(48, 82, "Erstellt fuer die Bewerbungswebsite. Beispielwerte fuer ein E-Commerce-Reporting-Projekt.", size=10),
+    ])
+    return "\n".join(lines).encode("ascii")
+
+
+def resume_pdf_stream() -> bytes:
+    lines = [
+        "q",
+        pdf_fill(36, 756, 523, 50, rgb=(0.05, 0.05, 0.05)),
+        pdf_fill(36, 734, 523, 6, rgb=(0.72, 0.12, 0.14)),
+        "Q",
+        pdf_text(48, 781, "Kassem Jaffal", size=25, font="F2"),
+        pdf_text(48, 761, "Bewerbung fuer die Ausbildung Kaufmann im E-Commerce", size=11),
+        pdf_text(48, 718, "Freiburg im Breisgau | 0174 9683772 | Hassan1.jaffal1@outlook.de", size=10),
+        pdf_text(48, 702, f"Website und Portfolio: {WEBSITE_URL}", size=10),
+        pdf_text(48, 670, "Kurzprofil", size=14, font="F2"),
+        pdf_text(48, 652, "Digital affiner Bewerber mit technischem Hintergrund, strukturierter Arbeitsweise", size=10),
+        pdf_text(48, 638, "und grossem Interesse an Onlinehandel, Shop-Systemen, Produktdarstellung und Daten.", size=10),
+        pdf_text(48, 624, "Private Projekte zu digitalen Brands, Social Media Marketing und Funnel-Ideen", size=10),
+        pdf_text(48, 610, "haben mein Verstaendnis fuer E-Commerce, Angebotslogik und Zielgruppen weiter vertieft.", size=10),
+        pdf_text(48, 580, "Schulbildung", size=14, font="F2"),
+        pdf_text(48, 562, "07/2025 | Abitur | Wentzinger Gymnasium, Freiburg", size=10),
+        pdf_text(48, 532, "Praktische Erfahrung", size=14, font="F2"),
+        pdf_text(48, 514, "09/2022 | Praktikum bei Bechtle AG", size=10, font="F2"),
+        pdf_text(48, 500, "Einblicke in technische Prozesse, systematisches Arbeiten und strukturierte Umsetzung.", size=10),
+        pdf_text(48, 482, "2023 | Soziales Praktikum im Kindergarten St. Elisabeth, Stuehlinger", size=10, font="F2"),
+        pdf_text(48, 468, "Staerkung von Teamfaehigkeit, Kommunikation, Verlaesslichkeit und Verantwortungsbewusstsein.", size=10),
+        pdf_text(48, 450, "Laufend | Private E-Commerce- und Marketing-Projekte", size=10, font="F2"),
+        pdf_text(48, 436, "Beschaeftigung mit digitalen Brands, Angebotsseiten, Social Media Marketing und Content-Planung.", size=10),
+        pdf_text(48, 418, "Projektbeispiele", size=14, font="F2"),
+        pdf_text(48, 400, "KPI Dashboard: Umsatz, AOV, Conversion, Retourenquote und Matchday-Vergleich.", size=10),
+        pdf_text(48, 386, "Interaktive Shop-Demo: Produktkarten, Suche, Filter, Warenkorb und vorbereiteter Checkout.", size=10),
+        pdf_text(48, 372, "Matchday-Funnel: Content-Route vom Teaser bis zum Sale mit Vereins- und Kampagnenbezug.", size=10),
+        pdf_text(48, 342, "Kenntnisse", size=14, font="F2"),
+        pdf_text(48, 324, "Interesse an E-Commerce, Online-Shops und digitalen Geschaeftsmodellen", size=10),
+        pdf_text(48, 310, "Sorgfaeltige und strukturierte Arbeitsweise, technisches Grundverstaendnis", size=10),
+        pdf_text(48, 296, "Interesse an Kennzahlen, Reporting, Zielgruppen und digitaler Kommunikation", size=10),
+        pdf_text(48, 282, "Teamfaehig, lernbereit, zuverlaessig und motiviert, Neues schnell aufzunehmen", size=10),
+        pdf_text(48, 252, "Sprachen", size=14, font="F2"),
+        pdf_text(48, 234, "Deutsch: Muttersprache | Englisch: B2 | Franzoesisch: B2 | Spanisch: B1", size=10),
+        pdf_text(48, 204, "Hinweis", size=14, font="F2"),
+        pdf_text(48, 186, "Die Website ergaenzt den Lebenslauf um konkrete E-Commerce-Arbeitsproben und eine Shop-Demo.", size=10),
+        pdf_text(48, 82, "Stand: Maerz 2026 | Bewerbungswebsite und PDF wurden als zusammengehoeriges Portfolio aufgebaut.", size=9),
+    ]
+    return "\n".join(lines).encode("ascii")
+
+
+def write_pdfs() -> None:
+    (DOWNLOADS / "SCF_Ecommerce_KPI_Dashboard.pdf").write_bytes(build_pdf([kpi_pdf_stream()]))
+    (DOWNLOADS / "Kassem_Jaffal_Lebenslauf.pdf").write_bytes(build_pdf([resume_pdf_stream()]))
 
 
 def main() -> None:
     write_csv()
     write_xlsx()
-    write_pdf()
+    write_pdfs()
 
 
 if __name__ == "__main__":
